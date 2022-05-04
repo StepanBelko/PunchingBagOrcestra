@@ -1,27 +1,20 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity;
 
-public class Violin {
-    private String name;
+public class Violin extends Musician{
     private int numberOfStrings;
-    private int experience;
-    private double volume;
 
-    public Violin() {
-    }
-
-    public Violin(String name, int numberOfStrings, int experience, double volume) {
-        this.name = name;
+    public Violin(int numberOfStrings) {
         this.numberOfStrings = numberOfStrings;
-        this.experience = experience;
-        this.volume = volume;
     }
 
-    public String getName() {
-        return name;
+    public Violin(String name, int numberOfStrings) {
+        super(name);
+        this.numberOfStrings = numberOfStrings;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Violin(String name, int experience, double volume, int numberOfStrings) {
+        super(name, experience, volume);
+        this.numberOfStrings = numberOfStrings;
     }
 
     public int getNumberOfStrings() {
@@ -32,29 +25,9 @@ public class Violin {
         this.numberOfStrings = numberOfStrings;
     }
 
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
-
-    public double getVolume() {
-        return volume;
-    }
-
-    public void setVolume(double volume) {
-        this.volume = volume;
-    }
-
     @Override
     public String toString() {
-        return "Violin {" +
-                "name = '" + name + '\'' +
-                ", numberOfStrings = " + numberOfStrings +
-                ", experience = " + experience + " years" +
-                ", volume = " + volume +
-                '}';
+        return super.toString() + " Violin " +
+                "numberOfStrings = " + numberOfStrings;
     }
 }

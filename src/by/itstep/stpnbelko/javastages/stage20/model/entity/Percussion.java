@@ -1,27 +1,20 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity;
 
-public class Percussion {
-    private String name;
+public class Percussion extends Musician {
     private int numberOfDrums;
-    private int experience;
-    private double volume;
 
-    public Percussion() {
-    }
-
-    public Percussion(String name, int numberOfDrums, int experience, double volume) {
-        this.name = name;
+    public Percussion(int numberOfDrums) {
         this.numberOfDrums = numberOfDrums;
-        this.experience = experience;
-        this.volume = volume;
     }
 
-    public String getName() {
-        return name;
+    public Percussion(String name, int numberOfDrums) {
+        super(name);
+        this.numberOfDrums = numberOfDrums;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Percussion(String name, int experience, double volume, int numberOfDrums) {
+        super(name, experience, volume);
+        this.numberOfDrums = numberOfDrums;
     }
 
     public int getNumberOfDrums() {
@@ -32,29 +25,9 @@ public class Percussion {
         this.numberOfDrums = numberOfDrums;
     }
 
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
-
-    public double getVolume() {
-        return volume;
-    }
-
-    public void setVolume(double volume) {
-        this.volume = volume;
-    }
-
     @Override
     public String toString() {
-        return "Percussion {" +
-                "name = '" + name + '\'' +
-                ", numberOfDrums = " + numberOfDrums + " drums" +
-                ", experience = " + experience +
-                ", volume = " + volume +
-                '}';
+        return super.toString() + " Percussion " +
+                "numberOfDrums = " + numberOfDrums;
     }
 }
