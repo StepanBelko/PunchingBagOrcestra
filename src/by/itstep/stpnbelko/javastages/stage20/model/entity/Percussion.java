@@ -1,5 +1,7 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity;
 
+import by.itstep.stpnbelko.javastages.stage20.model.abstracts.Musician;
+
 public class Percussion extends Musician {
     private int numberOfDrums;
 

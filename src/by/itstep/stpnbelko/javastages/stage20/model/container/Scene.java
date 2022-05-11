@@ -1,6 +1,6 @@
 package by.itstep.stpnbelko.javastages.stage20.model.container;
 
-import by.itstep.stpnbelko.javastages.stage20.model.entity.Musician;
+import by.itstep.stpnbelko.javastages.stage20.model.abstracts.Musician;
 
 public class Scene {
     private Musician[] musicians;
@@ -47,8 +47,7 @@ public class Scene {
         for (Musician element : musicians) {
             stringBuilder.append(element.toString()).append("\n");
         }
-        return "One the stage now {" +
-                "musicians \n" + stringBuilder +
-                '}';
+        return "One the stage now " +
+                "musicians \n" + stringBuilder;
     }
 }

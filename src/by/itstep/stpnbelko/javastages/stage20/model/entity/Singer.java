@@ -1,6 +1,8 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity;
 
-public class Singer extends Musician{
+import by.itstep.stpnbelko.javastages.stage20.model.abstracts.Musician;
+
+public class Singer extends Musician {
     private String voicePower;
 
     public Singer(String voicePower) {

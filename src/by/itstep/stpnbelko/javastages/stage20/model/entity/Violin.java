@@ -1,6 +1,8 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity;
 
-public class Violin extends Musician{
+import by.itstep.stpnbelko.javastages.stage20.model.abstracts.Musician;
+
+public class Violin extends Musician {
     private int numberOfStrings;
 
     public Violin(int numberOfStrings) {

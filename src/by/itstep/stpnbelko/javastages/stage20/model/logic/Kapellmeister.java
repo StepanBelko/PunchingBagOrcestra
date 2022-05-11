@@ -1,7 +1,7 @@
 package by.itstep.stpnbelko.javastages.stage20.model.logic;
 
 import by.itstep.stpnbelko.javastages.stage20.model.container.Scene;
-import by.itstep.stpnbelko.javastages.stage20.model.entity.Musician;
+import by.itstep.stpnbelko.javastages.stage20.model.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
@@ -30,6 +30,16 @@ public class Kapellmeister {
         for (Musician musician : scene.getMusicians()) {
             musician.playMusic();
         }
+    }
+
+    public static int howManyUnknownMusicians(Scene scene) {
+        int count = 0;
+        for (Musician musician : scene.getMusicians()) {
+            if (musician.getClass() == Musician.class) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static int howManySingers(Scene scene) {
