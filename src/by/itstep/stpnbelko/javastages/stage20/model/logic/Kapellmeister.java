@@ -28,7 +28,8 @@ public class Kapellmeister {
 
     public static void playMusic(Scene scene) {
         for (Musician musician : scene.getMusicians()) {
-            musician.playMusic();
+            musician.playMusic(musician); // Очень странно выглядит
+//            Запуск метода на объекте, в который мы передаём его же. Так можно?
         }
     }
 
