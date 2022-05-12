@@ -13,9 +13,22 @@ public class Scene {
         return musicians;
     }
 
-    public void setMusicians(Musician[] musicians) {
-        this.musicians = musicians;
+    public int getMusiciansCount() {
+        return musicians.length;
     }
+
+    public Musician getMusicianToIndex(int index) {
+        return musicians[index];
+    }
+
+    public void setMusicianToIndex(Musician musician, int index) {
+        musicians[index] = musician;
+    }
+
+//       Нужен ли этот сеттер вообще?
+//    public void setMusicians(Musician[] musicians) {
+//        this.musicians = musicians;
+//    }
 
     public void inviteMusician(Musician musician) {
         Musician[] temp = new Musician[musicians.length + 1];
