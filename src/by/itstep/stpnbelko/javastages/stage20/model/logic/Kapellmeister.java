@@ -2,26 +2,19 @@ package by.itstep.stpnbelko.javastages.stage20.model.logic;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.MusicianCalculable;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.MusicianInstance;
 
 public class Kapellmeister {
     private Kapellmeister() {
     }
 
-    public static int calculateTotalExperience(Scene scene) {
-        int totalExperience = 0;
+    public static double calculateTotal(Scene scene, MusicianCalculable calculable) {
+        double total = 0;
         for (Musician musician : scene.getMusicians()) {
-            totalExperience += musician.getExperience();
+            total += calculable.calculate(musician);
         }
-        return totalExperience;
-    }
-
-    public static double calculateTotalVolume(Scene scene) {
-        double totalVolume = 0;
-        for (Musician musician : scene.getMusicians()) {
-            totalVolume += musician.getVolume();
-        }
-        return totalVolume;
+        return total;
     }
 
     public static void playMusic(Scene scene) {

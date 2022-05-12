@@ -7,6 +7,8 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.StageSorter;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Experience;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Volume;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfPercussion;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfSinger;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfViolin;
@@ -45,11 +47,11 @@ public class Main {
         System.out.println(scene);
 
 //        считаем общий опыт музыкантов(считает дирижёр)
-        int totalExp = Kapellmeister.calculateTotalExperience(scene);
+        int totalExp = (int) Kapellmeister.calculateTotal(scene, new Experience());
         System.out.println("Total musicians experience is " + totalExp + " year(s)");
 
 //        считаем общую громкость оркестра(считает дирижёр)
-        double totalVolume = Kapellmeister.calculateTotalVolume(scene);
+        double totalVolume = Kapellmeister.calculateTotal(scene, new Volume());
         System.out.println("Total musicians volume is " + totalVolume + "dB");
 
 //        запускаем у всех музыкантов на сцене метод "играть музыку"(запускает дирижёр)
