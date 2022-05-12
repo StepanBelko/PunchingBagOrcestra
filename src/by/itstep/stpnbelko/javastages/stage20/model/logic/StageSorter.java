@@ -2,13 +2,14 @@ package by.itstep.stpnbelko.javastages.stage20.model.logic;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.MusiciansSortable;
 
 public class StageSorter {
 
-    public static void sortByVolumeAsc(Scene scene) {
+    public static void sortByVolumeAsc(Scene scene, MusiciansSortable sortable) {
         for (int i = 0; i < scene.getMusiciansCount() - 1; i++) {
             for (int j = 0; j < scene.getMusiciansCount() - 1 - i; j++) {
-                if (scene.getMusicianToIndex(j).getVolume() > scene.getMusicianToIndex(j + 1).getVolume()) {
+                if (sortable.compare(scene.getMusicianToIndex(j), scene.getMusicianToIndex(j + 1))) {
                     swap(scene, j);
                 }
             }

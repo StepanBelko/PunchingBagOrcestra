@@ -7,6 +7,9 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.StageSorter;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.MusiciansSortable;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortByVolumeAsc;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortByVolumeDesc;
 
 import static by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister.*;
 
@@ -54,7 +57,10 @@ public class Main {
         System.out.println("How many unknown musicians? " + howManyUnknownMusicians(scene));
 
 //        Сортировка музыкантов по уровню громкости
-        StageSorter.sortByVolumeAsc(scene);
+        StageSorter.sortByVolumeAsc(scene, new SortByVolumeAsc());
+        System.out.println(scene);
+
+        StageSorter.sortByVolumeAsc(scene, new SortByVolumeDesc());
         System.out.println(scene);
     }
 }
