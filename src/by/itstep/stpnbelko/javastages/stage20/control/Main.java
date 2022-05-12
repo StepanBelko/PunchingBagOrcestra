@@ -7,7 +7,10 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.StageSorter;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.MusiciansSortable;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfPercussion;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfSinger;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfViolin;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.UnknownInstance;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortByVolumeAsc;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortByVolumeDesc;
 
@@ -50,11 +53,12 @@ public class Main {
 //        запускаем у всех музыкантов на сцене метод "играть музыку"(запускает дирижёр)
         Kapellmeister.playMusic(scene);
 
-//        считаем отдельно вокалистов, скрипачей, перкуссионистов и неизвестных музыкантов на сцене
-        System.out.println("How many singers? " + howManySingers(scene));
-        System.out.println("How many violins? " + howManyViolins(scene));
-        System.out.println("How many percussionists? " + howManyPercussionists(scene));
-        System.out.println("How many unknown musicians? " + howManyUnknownMusicians(scene));
+//        Считаем отдельно вокалистов, скрипачей, перкуссионистов и неизвестных музыкантов на сцене
+//        Дополнено. Добавил интерфейс MusicianInstance для использования Strategy
+        System.out.println("How many singers? " + howManySomeInstance(scene, new InstanceOfSinger()));
+        System.out.println("How many violins? " + howManySomeInstance(scene, new InstanceOfViolin()));
+        System.out.println("How many percussionists? " + howManySomeInstance(scene, new InstanceOfPercussion()));
+        System.out.println("How many unknown musicians? " + howManySomeInstance(scene, new UnknownInstance()));
 
 //        Сортировка музыкантов по уровню громкости
         StageSorter.sortByVolumeAsc(scene, new SortByVolumeAsc());
