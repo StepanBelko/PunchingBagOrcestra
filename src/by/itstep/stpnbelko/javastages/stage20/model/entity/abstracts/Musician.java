@@ -1,6 +1,6 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts;
 
-public class Musician implements Playable{
+public class Musician implements Playable {
     private String name;
     private int experience;
     private double volume;
@@ -50,7 +50,4 @@ public class Musician implements Playable{
                 ", volume = " + volume;
     }
 
-//    public void playMusic() {
-//        System.out.println(this.getName() + " plays music now");
-//    }
 }
