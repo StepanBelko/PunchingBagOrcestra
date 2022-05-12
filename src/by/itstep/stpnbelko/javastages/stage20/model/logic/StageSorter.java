@@ -6,7 +6,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.Musicians
 
 public class StageSorter {
 
-    public static void sortByVolumeAsc(Scene scene, MusiciansSortable sortable) {
+    public static void sort(Scene scene, MusiciansSortable sortable) {
         for (int i = 0; i < scene.getMusiciansCount() - 1; i++) {
             for (int j = 0; j < scene.getMusiciansCount() - 1 - i; j++) {
                 if (sortable.compare(scene.getMusicianToIndex(j), scene.getMusicianToIndex(j + 1))) {

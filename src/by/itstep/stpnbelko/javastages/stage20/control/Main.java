@@ -11,6 +11,8 @@ import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.Insta
 import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfSinger;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfViolin;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.UnknownInstance;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortByExperienceAsc;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortByExperienceDesc;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortByVolumeAsc;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortByVolumeDesc;
 
@@ -61,10 +63,17 @@ public class Main {
         System.out.println("How many unknown musicians? " + howManySomeInstance(scene, new UnknownInstance()));
 
 //        Сортировка музыкантов по уровню громкости
-        StageSorter.sortByVolumeAsc(scene, new SortByVolumeAsc());
+        StageSorter.sort(scene, new SortByVolumeAsc());
         System.out.println(scene);
 
-        StageSorter.sortByVolumeAsc(scene, new SortByVolumeDesc());
+        StageSorter.sort(scene, new SortByVolumeDesc());
+        System.out.println(scene);
+
+//        Сортировка по опыту
+        StageSorter.sort(scene, new SortByExperienceAsc());
+        System.out.println(scene);
+
+        StageSorter.sort(scene, new SortByExperienceDesc());
         System.out.println(scene);
     }
 }
