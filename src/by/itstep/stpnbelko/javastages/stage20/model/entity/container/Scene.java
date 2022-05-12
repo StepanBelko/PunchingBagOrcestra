@@ -1,6 +1,6 @@
-package by.itstep.stpnbelko.javastages.stage20.model.container;
+package by.itstep.stpnbelko.javastages.stage20.model.entity.container;
 
-import by.itstep.stpnbelko.javastages.stage20.model.abstracts.Musician;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 
 public class Scene {
     private Musician[] musicians;

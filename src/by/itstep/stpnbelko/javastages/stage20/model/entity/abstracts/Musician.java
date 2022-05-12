@@ -1,4 +1,4 @@
-package by.itstep.stpnbelko.javastages.stage20.model.abstracts;
+package by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts;
 
 public class Musician implements Playable{
     private String name;

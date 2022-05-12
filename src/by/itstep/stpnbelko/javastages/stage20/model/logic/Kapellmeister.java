@@ -1,7 +1,7 @@
 package by.itstep.stpnbelko.javastages.stage20.model.logic;
 
-import by.itstep.stpnbelko.javastages.stage20.model.container.Scene;
-import by.itstep.stpnbelko.javastages.stage20.model.abstracts.Musician;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
