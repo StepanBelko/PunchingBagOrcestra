@@ -33,17 +33,17 @@ public class Main {
 //        создаём сцену
         Scene scene = new Scene();
 //        приглашаем музыкантов на сцену
-        scene.inviteMusician(musician);
-        scene.inviteMusician(singer);
-        scene.inviteMusician(singer2);
-        scene.inviteMusician(violin);
-        scene.inviteMusician(musician1);
-        scene.inviteMusician(violin3);
-        scene.inviteMusician(percussion);
+        scene.add(musician);
+        scene.add(singer);
+        scene.add(singer2);
+        scene.add(violin);
+        scene.add(musician1);
+        scene.add(violin3);
+        scene.add(percussion);
         System.out.println(scene);
 
 //        некоторых выгоняем со сцены)
-        scene.expelMusician(3);
+        scene.remove(3);
         System.out.println(scene);
 
 //        считаем общий опыт музыкантов(считает дирижёр)

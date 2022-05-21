@@ -22,12 +22,12 @@ public class KapellmeisterTest {
         Singer singer2 = new Singer("Voice2", 20, 350.0, "low");
 
         Scene scene = new Scene();
-        scene.inviteMusician(violin);
-        scene.inviteMusician(violin3);
-        scene.inviteMusician(musician1);
-        scene.inviteMusician(percussion);
-        scene.inviteMusician(singer);
-        scene.inviteMusician(singer2);
+        scene.add(violin);
+        scene.add(violin3);
+        scene.add(musician1);
+        scene.add(percussion);
+        scene.add(singer);
+        scene.add(singer2);
         double expected = 504.4;
         double actual = Kapellmeister.calculateTotal(scene, new Volume());
 
@@ -44,12 +44,12 @@ public class KapellmeisterTest {
         Singer singer2 = new Singer("Voice2", 20, 350.0, "low");
 
         Scene scene = new Scene();
-        scene.inviteMusician(violin);
-        scene.inviteMusician(violin3);
-        scene.inviteMusician(musician1);
-        scene.inviteMusician(percussion);
-        scene.inviteMusician(singer);
-        scene.inviteMusician(singer2);
+        scene.add(violin);
+        scene.add(violin3);
+        scene.add(musician1);
+        scene.add(percussion);
+        scene.add(singer);
+        scene.add(singer2);
         int expected = 63;
         int actual = (int)Kapellmeister.calculateTotal(scene, new Experience());
 

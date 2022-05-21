@@ -30,7 +30,7 @@ public class Scene {
 //        this.musicians = musicians;
 //    }
 
-    public void inviteMusician(Musician musician) {
+    public void add(Musician musician) {
         Musician[] temp = new Musician[musicians.length + 1];
         int i = 0;
         for (; i < musicians.length; i++) {
@@ -41,7 +41,7 @@ public class Scene {
         System.out.println("added " + musician.getName());
     }
 
-    public void expelMusician(int index) {
+    public void remove(int index) {
         Musician[] temp = new Musician[musicians.length - 1];
         System.out.println("expelling " + musicians[index].getName());
         for (int i = 0, j = 0; i < musicians.length; i++) {
