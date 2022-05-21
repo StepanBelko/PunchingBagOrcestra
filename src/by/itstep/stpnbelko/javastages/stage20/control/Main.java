@@ -1,10 +1,11 @@
 package by.itstep.stpnbelko.javastages.stage20.control;
 
-import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneDynamicArray;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.SceneDynamicArrayPattern;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.StageSorter;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Experience;
@@ -31,7 +32,7 @@ public class Main {
         Singer singer = new Singer("Voice1", 20, 40.0, "highest");
         Singer singer2 = new Singer("Voice2", 20, 350.0, "low");
 //        создаём сцену
-        Scene scene = new Scene();
+        SceneDynamicArray scene = new SceneDynamicArray();
 //        приглашаем музыкантов на сцену
         scene.add(musician);
         scene.add(singer);
@@ -40,8 +41,7 @@ public class Main {
         scene.add(musician1);
         scene.add(violin3);
         scene.add(percussion);
-        System.out.println(scene);
-
+/*
 //        некоторых выгоняем со сцены)
         scene.remove(3);
         System.out.println(scene);
@@ -76,6 +76,9 @@ public class Main {
         System.out.println(scene);
 
         StageSorter.sort(scene, new SortByExperienceDesc());
-        System.out.println(scene);
+        System.out.println(scene);*/
+
+        Kapellmeister.playMusic(scene);
+        
     }
 }

@@ -1,20 +1,18 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity.container;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.MyIterator;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.SceneDynamicArrayPattern;
 
-public class Scene {
+public class SceneDynamicArray implements Container, Iterable {
     private Musician[] musicians;
 
-    public Scene() {
+    public SceneDynamicArray() {
         musicians = new Musician[0];
     }
 
     public Musician[] getMusicians() {
         return musicians;
-    }
-
-    public int getMusiciansCount() {
-        return musicians.length;
     }
 
     public Musician getMusicianToIndex(int index) {
@@ -62,5 +60,20 @@ public class Scene {
         }
         return "One the stage now " +
                 "musicians \n" + stringBuilder;
+    }
+
+    @Override
+    public int size() {
+        return musicians.length;
+    }
+
+    @Override
+    public Musician get(int index) {
+        return musicians[index];
+    }
+
+    @Override
+    public MyIterator getIterator() {
+        return new SceneDynamicArrayPattern(this);
     }
 }

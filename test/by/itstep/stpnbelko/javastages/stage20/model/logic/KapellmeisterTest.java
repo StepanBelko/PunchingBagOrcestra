@@ -4,7 +4,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
-import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneDynamicArray;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Experience;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Volume;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class KapellmeisterTest {
         Singer singer = new Singer("Voice1", 20, 40.0, "highest");
         Singer singer2 = new Singer("Voice2", 20, 350.0, "low");
 
-        Scene scene = new Scene();
+        SceneDynamicArray scene = new SceneDynamicArray();
         scene.add(violin);
         scene.add(violin3);
         scene.add(musician1);
@@ -43,7 +43,7 @@ public class KapellmeisterTest {
         Singer singer = new Singer("Voice1", 20, 40.0, "highest");
         Singer singer2 = new Singer("Voice2", 20, 350.0, "low");
 
-        Scene scene = new Scene();
+        SceneDynamicArray scene = new SceneDynamicArray();
         scene.add(violin);
         scene.add(violin3);
         scene.add(musician1);
