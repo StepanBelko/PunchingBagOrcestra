@@ -96,5 +96,8 @@ public class Main {
         System.out.println("How many violins? " + howManySomeInstance(sceneLinkedList, new InstanceOfViolin()));
         System.out.println("How many percussionists? " + howManySomeInstance(sceneLinkedList, new InstanceOfPercussion()));
         System.out.println("How many unknown musicians? " + howManySomeInstance(sceneLinkedList, new UnknownInstance()));
+
+        sceneLinkedList.remove(1);
+        System.out.println(sceneLinkedList);
     }
 }
