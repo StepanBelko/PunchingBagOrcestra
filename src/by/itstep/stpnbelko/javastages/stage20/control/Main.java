@@ -5,7 +5,9 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneLinkedList;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.SceneDynamicArrayPattern;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.SceneLinkedListPattern;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.StageSorter;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Experience;
@@ -78,7 +80,18 @@ public class Main {
         StageSorter.sort(scene, new SortByExperienceDesc());
         System.out.println(scene);*/
 
-        Kapellmeister.playMusic(scene);
+//        Kapellmeister.playMusic(scene);
         
+        SceneLinkedList sceneLinkedList = new SceneLinkedList();
+
+        sceneLinkedList.add(violin);
+        sceneLinkedList.add(singer);
+        sceneLinkedList.add(percussion);
+
+        SceneLinkedListPattern sceneLinkedListPattern = new SceneLinkedListPattern(sceneLinkedList);
+
+        while (sceneLinkedListPattern.hasNext()) {
+            System.out.println(sceneLinkedListPattern.next());
+        }
     }
 }
