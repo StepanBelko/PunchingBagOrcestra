@@ -43,10 +43,9 @@ public class Main {
         scene.add(musician1);
         scene.add(violin3);
         scene.add(percussion);
-/*
 //        некоторых выгоняем со сцены)
-        scene.remove(3);
-        System.out.println(scene);
+//        scene.remove(3);
+//        System.out.println(scene);
 
 //        считаем общий опыт музыкантов(считает дирижёр)
         int totalExp = (int) Kapellmeister.calculateTotal(scene, new Experience());
@@ -61,24 +60,24 @@ public class Main {
 
 //        Считаем отдельно вокалистов, скрипачей, перкуссионистов и неизвестных музыкантов на сцене
 //        Дополнено. Добавил интерфейс MusicianInstance для использования Strategy
-        System.out.println("How many singers? " + howManySomeInstance(scene, new InstanceOfSinger()));
-        System.out.println("How many violins? " + howManySomeInstance(scene, new InstanceOfViolin()));
-        System.out.println("How many percussionists? " + howManySomeInstance(scene, new InstanceOfPercussion()));
-        System.out.println("How many unknown musicians? " + howManySomeInstance(scene, new UnknownInstance()));
+//        System.out.println("How many singers? " + howManySomeInstance(scene, new InstanceOfSinger()));
+//        System.out.println("How many violins? " + howManySomeInstance(scene, new InstanceOfViolin()));
+//        System.out.println("How many percussionists? " + howManySomeInstance(scene, new InstanceOfPercussion()));
+//        System.out.println("How many unknown musicians? " + howManySomeInstance(scene, new UnknownInstance()));
 
 //        Сортировка музыкантов по уровню громкости
-        StageSorter.sort(scene, new SortByVolumeAsc());
-        System.out.println(scene);
+//        StageSorter.sort(scene, new SortByVolumeAsc());
+//        System.out.println(scene);
 
-        StageSorter.sort(scene, new SortByVolumeDesc());
-        System.out.println(scene);
+//        StageSorter.sort(scene, new SortByVolumeDesc());
+//        System.out.println(scene);
 
 //        Сортировка по опыту
-        StageSorter.sort(scene, new SortByExperienceAsc());
-        System.out.println(scene);
+//        StageSorter.sort(scene, new SortByExperienceAsc());
+//        System.out.println(scene);
 
-        StageSorter.sort(scene, new SortByExperienceDesc());
-        System.out.println(scene);*/
+//        StageSorter.sort(scene, new SortByExperienceDesc());
+//        System.out.println(scene);
 
 //        Kapellmeister.playMusic(scene);
         
@@ -89,5 +88,8 @@ public class Main {
         sceneLinkedList.add(percussion);
 
         Kapellmeister.playMusic(sceneLinkedList);
+
+        System.out.println(calculateTotal(sceneLinkedList, new Volume()));
+        System.out.println(calculateTotal(sceneLinkedList, new Experience()));
     }
 }

@@ -14,7 +14,7 @@ public class SceneDynamicArrayPattern implements MyIterator {
 
     @Override
     public Musician next() {
-        return array.get(current);
+        return array.get(current++);
     }
 
     @Override

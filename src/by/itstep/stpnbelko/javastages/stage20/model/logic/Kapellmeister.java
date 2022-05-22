@@ -12,11 +12,14 @@ public class Kapellmeister {
     private Kapellmeister() {
     }
 
-    public static double calculateTotal(SceneDynamicArray scene, MusicianCalculable calculable) {
+    public static double calculateTotal(Iterable iterable, MusicianCalculable calculable) {
         double total = 0;
-        for (Musician musician : scene.getMusicians()) {
-            total += calculable.calculate(musician);
+        MyIterator iterator = iterable.getIterator();
+
+        while (iterator.hasNext()) {
+            total += calculable.calculate(iterator.next());
         }
+
         return total;
     }
 
