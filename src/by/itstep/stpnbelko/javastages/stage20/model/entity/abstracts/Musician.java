@@ -50,4 +50,8 @@ public class Musician implements Playable {
                 ", volume = " + volume;
     }
 
+    @Override
+    public void playMusic() {
+        System.out.println(name + " play music now");
+    }
 }

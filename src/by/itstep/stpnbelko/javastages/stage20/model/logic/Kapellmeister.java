@@ -26,7 +26,7 @@ public class Kapellmeister {
     public static void playMusic(Iterable iterable) {
         MyIterator iterator = iterable.getIterator();
         while (iterator.hasNext()) {
-            iterator.next().playMusic(iterator.getName());
+            iterator.next().playMusic();
         }
     }
 
