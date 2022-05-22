@@ -6,5 +6,4 @@ public interface MyIterator {
     Musician next();
     boolean hasNext();
     void reset();
-    String getName();
 }

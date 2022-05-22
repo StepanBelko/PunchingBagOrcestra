@@ -4,7 +4,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneLinkedList;
 
 public class SceneLinkedListPattern implements MyIterator {
-    private SceneLinkedList linkedList;
+    private final SceneLinkedList linkedList;
     private int current;
 
     public SceneLinkedListPattern(SceneLinkedList linkedList) {
@@ -26,9 +26,5 @@ public class SceneLinkedListPattern implements MyIterator {
     public void reset() {
         current = 0;
     }
-
-    @Override
-    public String getName() {
-        return linkedList.get(current - 1).getName();
-    }
+    
 }

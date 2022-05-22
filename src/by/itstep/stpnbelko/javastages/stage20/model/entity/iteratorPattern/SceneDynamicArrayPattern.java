@@ -4,7 +4,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneDynamicArray;
 
 public class SceneDynamicArrayPattern implements MyIterator {
-    private SceneDynamicArray array;
+    private final SceneDynamicArray array;
     private int current;
 
     public SceneDynamicArrayPattern(SceneDynamicArray array) {
@@ -26,9 +26,5 @@ public class SceneDynamicArrayPattern implements MyIterator {
     public void reset() {
         current = 0;
     }
-
-    @Override
-    public String getName() {
-        return array.get(current - 1).getName();
-    }
+    
 }

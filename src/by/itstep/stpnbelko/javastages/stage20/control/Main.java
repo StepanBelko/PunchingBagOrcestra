@@ -60,10 +60,10 @@ public class Main {
 
 //        Считаем отдельно вокалистов, скрипачей, перкуссионистов и неизвестных музыкантов на сцене
 //        Дополнено. Добавил интерфейс MusicianInstance для использования Strategy
-//        System.out.println("How many singers? " + howManySomeInstance(scene, new InstanceOfSinger()));
-//        System.out.println("How many violins? " + howManySomeInstance(scene, new InstanceOfViolin()));
-//        System.out.println("How many percussionists? " + howManySomeInstance(scene, new InstanceOfPercussion()));
-//        System.out.println("How many unknown musicians? " + howManySomeInstance(scene, new UnknownInstance()));
+        System.out.println("How many singers? " + howManySomeInstance(scene, new InstanceOfSinger()));
+        System.out.println("How many violins? " + howManySomeInstance(scene, new InstanceOfViolin()));
+        System.out.println("How many percussionists? " + howManySomeInstance(scene, new InstanceOfPercussion()));
+        System.out.println("How many unknown musicians? " + howManySomeInstance(scene, new UnknownInstance()));
 
 //        Сортировка музыкантов по уровню громкости
 //        StageSorter.sort(scene, new SortByVolumeAsc());
@@ -91,5 +91,10 @@ public class Main {
 
         System.out.println(calculateTotal(sceneLinkedList, new Volume()));
         System.out.println(calculateTotal(sceneLinkedList, new Experience()));
+
+        System.out.println("How many singers? " + howManySomeInstance(sceneLinkedList, new InstanceOfSinger()));
+        System.out.println("How many violins? " + howManySomeInstance(sceneLinkedList, new InstanceOfViolin()));
+        System.out.println("How many percussionists? " + howManySomeInstance(sceneLinkedList, new InstanceOfPercussion()));
+        System.out.println("How many unknown musicians? " + howManySomeInstance(sceneLinkedList, new UnknownInstance()));
     }
 }
