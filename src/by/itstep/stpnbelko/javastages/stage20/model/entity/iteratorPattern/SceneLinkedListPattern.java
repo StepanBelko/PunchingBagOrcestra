@@ -2,7 +2,6 @@ package by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneLinkedList;
-import org.w3c.dom.Node;
 
 public class SceneLinkedListPattern implements MyIterator {
     private SceneLinkedList linkedList;
@@ -30,6 +29,6 @@ public class SceneLinkedListPattern implements MyIterator {
 
     @Override
     public String getName() {
-        return linkedList.get(current).getName();
+        return linkedList.get(current - 1).getName();
     }
 }

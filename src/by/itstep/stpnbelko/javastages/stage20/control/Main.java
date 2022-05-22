@@ -88,10 +88,6 @@ public class Main {
         sceneLinkedList.add(singer);
         sceneLinkedList.add(percussion);
 
-        SceneLinkedListPattern sceneLinkedListPattern = new SceneLinkedListPattern(sceneLinkedList);
-
-        while (sceneLinkedListPattern.hasNext()) {
-            System.out.println(sceneLinkedListPattern.next());
-        }
+        Kapellmeister.playMusic(sceneLinkedList);
     }
 }

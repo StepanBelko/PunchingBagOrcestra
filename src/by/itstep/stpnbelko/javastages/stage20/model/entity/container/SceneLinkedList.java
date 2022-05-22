@@ -1,8 +1,10 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity.container;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.MyIterator;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.SceneLinkedListPattern;
 
-public class SceneLinkedList implements Container {
+public class SceneLinkedList implements Container, Iterable {
     Node first;
     int size;
 
@@ -13,7 +15,7 @@ public class SceneLinkedList implements Container {
 
     public void add(Musician musician) {
         if (size == 0) {
-            first =new Node(musician);
+            first = new Node(musician);
         } else {
             Node temp = first;
             while (temp.next != null) {
@@ -24,17 +26,27 @@ public class SceneLinkedList implements Container {
         size++;
     }
 
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        Node temp = first;
-        while (temp.next != null) {
+
+        if (isEmpty()) {
+            stringBuilder.append("Scene is empty");
+            return stringBuilder.toString();
+        } else {
+            Node temp = first;
+            while (temp.next != null) {
+                stringBuilder.append(temp.musician).append("\n");
+                temp = temp.next;
+            }
             stringBuilder.append(temp.musician).append("\n");
-            temp = temp.next;
+            return "One the stage now " +
+                    "musicians \n" + stringBuilder;
         }
-        stringBuilder.append(temp.musician).append("\n");
-        return "One the stage now " +
-                "musicians \n" + stringBuilder;
     }
 
     @Override
@@ -44,11 +56,20 @@ public class SceneLinkedList implements Container {
 
     @Override
     public Musician get(int index) {
+        if (isEmpty() || index >= size || index < 0) {
+            return null;
+        }
         Node temp = first;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
+
         return temp.musician;
+    }
+
+    @Override
+    public MyIterator getIterator() {
+        return new SceneLinkedListPattern(this);
     }
 
     private class Node {
