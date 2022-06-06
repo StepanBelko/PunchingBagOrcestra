@@ -66,11 +66,11 @@ public class Main {
         System.out.println("How many unknown musicians? " + howManySomeInstance(scene, new UnknownInstance()));
 
 //        Сортировка музыкантов по уровню громкости
-//        StageSorter.sort(scene, new SortByVolumeAsc());
-//        System.out.println(scene);
+        StageSorter.sort(scene, new SortByVolumeAsc());
+        System.out.println(scene);
 
-//        StageSorter.sort(scene, new SortByVolumeDesc());
-//        System.out.println(scene);
+        StageSorter.sort(scene, new SortByVolumeDesc());
+        System.out.println(scene);
 
 //        Сортировка по опыту
 //        StageSorter.sort(scene, new SortByExperienceAsc());

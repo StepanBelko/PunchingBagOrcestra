@@ -4,6 +4,8 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneDynamicArray;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.MusiciansSortable;
 
+import java.util.Collections;
+
 public class StageSorter {
 
     public static void sort(SceneDynamicArray scene, MusiciansSortable sortable) {

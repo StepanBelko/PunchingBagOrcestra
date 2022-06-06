@@ -6,6 +6,7 @@ public class Musician implements Playable {
     private double volume;
 
     public Musician() {
+        // присвоить дефолтные значения
     }
 
     public Musician(String name) {
