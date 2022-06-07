@@ -1,22 +1,28 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Comparator;
+
 public class Musician implements Playable {
     private String name;
     private int experience;
     private double volume;
 
-    public Musician() {
-        // присвоить дефолтные значения
-    }
-
     public Musician(String name) {
         this.name = name;
+        this.experience = 0;
+        this.volume = 0;
     }
 
     public Musician(String name, int experience, double volume) {
         this.name = name;
-        this.experience = experience;
-        this.volume = volume;
+        if (experience >= 0) {
+            this.experience = experience;
+        }
+        if (volume > 0) {
+            this.volume = volume;
+        }
     }
 
     public String getName() {
@@ -32,7 +38,9 @@ public class Musician implements Playable {
     }
 
     public void setExperience(int experience) {
-        this.experience = experience;
+        if (experience >= 0) {
+            this.experience = experience;
+        }
     }
 
     public double getVolume() {
@@ -40,7 +48,9 @@ public class Musician implements Playable {
     }
 
     public void setVolume(double volume) {
-        this.volume = volume;
+        if (volume > 0) {
+            this.volume = volume;
+        }
     }
 
     @Override
