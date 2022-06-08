@@ -6,6 +6,7 @@ public class Singer extends Musician {
     private String voicePower;
 
     public Singer(String voicePower) {
+        super("Singer");
         this.voicePower = voicePower;
     }
 
@@ -33,3 +34,4 @@ public class Singer extends Musician {
                 "voicePower = " + voicePower;
     }
 }
+

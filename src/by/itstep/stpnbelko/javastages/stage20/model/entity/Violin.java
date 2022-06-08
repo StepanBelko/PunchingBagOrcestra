@@ -6,6 +6,7 @@ public class Violin extends Musician {
     private int numberOfStrings;
 
     public Violin(int numberOfStrings) {
+        super("Violin");
         this.numberOfStrings = numberOfStrings;
     }
 

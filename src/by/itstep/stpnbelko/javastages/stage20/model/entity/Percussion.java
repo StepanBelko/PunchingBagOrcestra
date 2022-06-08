@@ -6,6 +6,7 @@ public class Percussion extends Musician {
     private int numberOfDrums;
 
     public Percussion(int numberOfDrums) {
+        super("Percussion");
         this.numberOfDrums = numberOfDrums;
     }
 
