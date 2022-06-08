@@ -11,6 +11,7 @@ public class MusicianFactory {
     private static int violinCount = 0;
     private static int percussionCount = 0;
 
+    private static final MusicianFactory factory = new MusicianFactory();
     private static final Random random = new Random();
 
     public Musician createMusician(MusicianTypes type) {
@@ -18,17 +19,16 @@ public class MusicianFactory {
 
         switch (type) {
             case SINGER -> musician = createRandomSinger();
-            case VIOLIN -> musician = new Violin(type.getRusName() + " " + (++violinCount), 11, 110.2, 4);
-            case PERCUSSION -> musician = new Percussion("Percussion " + ++percussionCount, 12, 200.0, 13);
+            case VIOLIN -> musician = createRandomViolin();
+            case PERCUSSION -> musician = createRandomPercussion();
         }
         return musician;
     }
 
     public static Musician createRandomMusician() {
         MusicianTypes[] types = MusicianTypes.values();
-        MusicianFactory factory = new MusicianFactory();
-
         int i = random.nextInt(types.length);
+
         System.out.println("Random Musician is " + types[i]);
         return factory.createMusician(types[i]);
     }
@@ -38,5 +38,21 @@ public class MusicianFactory {
         double volume = random.nextDouble() * 100;
 
         return new Singer(MusicianTypes.SINGER.getRusName() + " " + ++singerCount, experience, volume, "SuperHi");
+    }
+
+    private Percussion createRandomPercussion() {
+        int experience = random.nextInt(100);
+        double volume = random.nextDouble() * 200;
+        int numberOfDrums = random.nextInt(20);
+
+        return new Percussion(MusicianTypes.PERCUSSION.getRusName() + " " + ++percussionCount, experience, volume, numberOfDrums);
+    }
+
+    private Violin createRandomViolin() {
+        int experience = random.nextInt(100);
+        double volume = random.nextDouble() * 120;
+        int numberOfStrings = random.nextInt(20);
+
+        return new Violin(MusicianTypes.VIOLIN.getRusName() + " " + ++violinCount, experience, volume, numberOfStrings);
     }
 }

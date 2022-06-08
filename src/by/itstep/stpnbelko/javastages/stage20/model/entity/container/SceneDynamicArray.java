@@ -4,8 +4,17 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.MyIterator;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.SceneDynamicArrayPattern;
 
+import static by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.MusicianFactory.createRandomMusician;
+
 public class SceneDynamicArray implements Container, Iterable {
     private Musician[] musicians;
+
+    public SceneDynamicArray(int amount) {
+        musicians = new Musician[0];
+        for (int i = 0; i < amount; i++) {
+            this.add(createRandomMusician());
+        }
+    }
 
     public SceneDynamicArray() {
         musicians = new Musician[0];
@@ -15,11 +24,7 @@ public class SceneDynamicArray implements Container, Iterable {
         return musicians;
     }
 
-    public Musician getMusicianToIndex(int index) {
-        return musicians[index];
-    }
-
-    public void setMusicianToIndex(Musician musician, int index) {
+    public void set(Musician musician, int index) {
         musicians[index] = musician;
     }
 
@@ -58,8 +63,8 @@ public class SceneDynamicArray implements Container, Iterable {
         for (Musician element : musicians) {
             stringBuilder.append(element.toString()).append("\n");
         }
-        return "One the stage now " +
-                "musicians \n" + stringBuilder;
+        return "One the stage now " + musicians.length +
+                " musicians \n" + stringBuilder;
     }
 
     @Override
