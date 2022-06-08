@@ -2,34 +2,34 @@ package by.itstep.stpnbelko.javastages.stage20.model.entity;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 
-public class Singer extends Musician {
-    private String voicePower;
+public class Singer<SingerEnum> extends Musician {
+    private SingerEnum voicePower;
 
-    public Singer(String voicePower) {
+    public Singer(SingerEnum voicePower) {
         super("Singer");
         this.voicePower = voicePower;
     }
 
-    public Singer(String name, String voicePower) {
+    public Singer(String name, SingerEnum voicePower) {
         super(name);
         this.voicePower = voicePower;
     }
 
-    public Singer(String name, int experience, double volume, String voicePower) {
+    public Singer(String name, int experience, double volume, SingerEnum voicePower) {
         super(name, experience, volume);
         this.voicePower = voicePower;
     }
 
-    public Singer(String name, int experience, double volume, double salary, String voicePower) {
+    public Singer(String name, int experience, double volume, double salary, SingerEnum voicePower) {
         super(name, experience, volume, salary);
         this.voicePower = voicePower;
     }
 
-    public String getVoicePower() {
+    public SingerEnum getVoicePower() {
         return voicePower;
     }
 
-    public void setVoicePower(String voicePower) {
+    public void setVoicePower(SingerEnum voicePower) {
         this.voicePower = voicePower;
     }
 
@@ -39,4 +39,6 @@ public class Singer extends Musician {
                 "voicePower = " + voicePower;
     }
 }
+
+
 

@@ -2,6 +2,7 @@ package by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.SingerEnum;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
 
 import java.util.Random;
@@ -35,9 +36,9 @@ public class MusicianFactory {
     private Singer createRandomSinger() {
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 100;
-        double salary = random.nextDouble() * (2000 - 500) + 500;
+        double salary = random.nextDouble() * (2000 - 1000) + 1000;
 
-        return new Singer(MusicianTypes.SINGER.getRusName() + " " + ++singerCount, experience, volume, salary,"SuperHi");
+        return new Singer(MusicianTypes.SINGER.getRusName() + " " + ++singerCount, experience, volume, salary, SingerEnum.UNKNOWN_VOICE_POWER);
     }
 
     private Percussion createRandomPercussion() {
