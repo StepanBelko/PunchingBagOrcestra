@@ -20,6 +20,11 @@ public class Violin extends Musician {
         this.numberOfStrings = numberOfStrings;
     }
 
+    public Violin(String name, int experience, double volume, double salary, int numberOfStrings) {
+        super(name, experience, volume, salary);
+        this.numberOfStrings = numberOfStrings;
+    }
+
     public int getNumberOfStrings() {
         return numberOfStrings;
     }

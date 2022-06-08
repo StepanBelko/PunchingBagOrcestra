@@ -20,6 +20,11 @@ public class Singer extends Musician {
         this.voicePower = voicePower;
     }
 
+    public Singer(String name, int experience, double volume, double salary, String voicePower) {
+        super(name, experience, volume, salary);
+        this.voicePower = voicePower;
+    }
+
     public String getVoicePower() {
         return voicePower;
     }

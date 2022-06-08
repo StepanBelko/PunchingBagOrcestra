@@ -29,30 +29,32 @@ public class MusicianFactory {
         MusicianTypes[] types = MusicianTypes.values();
         int i = random.nextInt(types.length);
 
-        System.out.println("Random Musician is " + types[i]);
         return factory.createMusician(types[i]);
     }
 
     private Singer createRandomSinger() {
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 100;
+        double salary = random.nextDouble() * (2000 - 500) + 500;
 
-        return new Singer(MusicianTypes.SINGER.getRusName() + " " + ++singerCount, experience, volume, "SuperHi");
+        return new Singer(MusicianTypes.SINGER.getRusName() + " " + ++singerCount, experience, volume, salary,"SuperHi");
     }
 
     private Percussion createRandomPercussion() {
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 200;
         int numberOfDrums = random.nextInt(20);
+        double salary = random.nextDouble() * (1000 - 100) + 100;
 
-        return new Percussion(MusicianTypes.PERCUSSION.getRusName() + " " + ++percussionCount, experience, volume, numberOfDrums);
+        return new Percussion(MusicianTypes.PERCUSSION.getRusName() + " " + ++percussionCount, experience, volume, salary, numberOfDrums);
     }
 
     private Violin createRandomViolin() {
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 120;
         int numberOfStrings = random.nextInt(20);
+        double salary = random.nextDouble() * (800 - 200) + 200;
 
-        return new Violin(MusicianTypes.VIOLIN.getRusName() + " " + ++violinCount, experience, volume, numberOfStrings);
+        return new Violin(MusicianTypes.VIOLIN.getRusName() + " " + ++violinCount, experience, volume, salary, numberOfStrings);
     }
 }

@@ -20,6 +20,11 @@ public class Percussion extends Musician {
         this.numberOfDrums = numberOfDrums;
     }
 
+    public Percussion(String name, int experience, double volume, double salary, int numberOfDrums) {
+        super(name, experience, volume, salary);
+        this.numberOfDrums = numberOfDrums;
+    }
+
     public int getNumberOfDrums() {
         return numberOfDrums;
     }
