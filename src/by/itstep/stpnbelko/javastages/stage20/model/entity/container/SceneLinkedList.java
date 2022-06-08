@@ -4,7 +4,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.MyIterator;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.SceneLinkedListPattern;
 
-public class SceneLinkedList implements Container, Iterable {
+public class SceneLinkedList implements Scene, Iterable {
     Node first;
     int size;
 

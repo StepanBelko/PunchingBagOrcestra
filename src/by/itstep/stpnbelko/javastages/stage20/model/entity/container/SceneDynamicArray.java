@@ -4,9 +4,9 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.MyIterator;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.iteratorPattern.SceneDynamicArrayPattern;
 
-import static by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.MusicianFactory.createRandomMusician;
+import static by.itstep.stpnbelko.javastages.stage20.util.MusicianFactory.createRandomMusician;
 
-public class SceneDynamicArray implements Container, Iterable {
+public class SceneDynamicArray implements Scene, Iterable {
     private Musician[] musicians;
 
     public SceneDynamicArray(int amount) {

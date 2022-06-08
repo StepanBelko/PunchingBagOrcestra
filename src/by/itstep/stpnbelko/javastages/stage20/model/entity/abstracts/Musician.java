@@ -77,7 +77,7 @@ public class Musician implements Playable {
         return "Musician " +
                 "\"" + name + "\"" +
                 ", experience = " + experience + " years" +
-                ", volume = " + String.format("%.2f", volume) +
+                ", volume = " + String.format("%.2f", volume) + "dB" +
                 ", salary = " + String.format("%.2f",salary) + "$";
     }
 

@@ -1,9 +1,10 @@
-package by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts;
+package by.itstep.stpnbelko.javastages.stage20.util;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.SingerEnum;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 
 import java.util.Random;
 
@@ -38,7 +39,8 @@ public class MusicianFactory {
         double volume = random.nextDouble() * 100;
         double salary = random.nextDouble() * (2000 - 1000) + 1000;
 
-        return new Singer(MusicianTypes.SINGER.getRusName() + " " + ++singerCount, experience, volume, salary, SingerEnum.UNKNOWN_VOICE_POWER);
+        return new Singer(MusicianTypes.SINGER.getRusName() + " "
+                + ++singerCount, experience, volume, salary, SingerEnum.UNKNOWN_VOICE_POWER);
     }
 
     private Percussion createRandomPercussion() {
@@ -47,7 +49,8 @@ public class MusicianFactory {
         int numberOfDrums = random.nextInt(20);
         double salary = random.nextDouble() * (1000 - 100) + 100;
 
-        return new Percussion(MusicianTypes.PERCUSSION.getRusName() + " " + ++percussionCount, experience, volume, salary, numberOfDrums);
+        return new Percussion(MusicianTypes.PERCUSSION.getRusName() + " "
+                + ++percussionCount, experience, volume, salary, numberOfDrums);
     }
 
     private Violin createRandomViolin() {
@@ -56,6 +59,24 @@ public class MusicianFactory {
         int numberOfStrings = random.nextInt(20);
         double salary = random.nextDouble() * (800 - 200) + 200;
 
-        return new Violin(MusicianTypes.VIOLIN.getRusName() + " " + ++violinCount, experience, volume, salary, numberOfStrings);
+        return new Violin(MusicianTypes.VIOLIN.getRusName() + " "
+                + ++violinCount, experience, volume, salary, numberOfStrings);
+    }
+
+    public enum MusicianTypes {
+        PERCUSSION ("Барабаны"),
+        SINGER("Певец"),
+        VIOLIN("Скрипка");
+
+        private final String rusName;
+
+
+        MusicianTypes(String rusName) {
+            this.rusName = rusName;
+        }
+
+        public String getRusName() {
+            return rusName;
+        }
     }
 }
