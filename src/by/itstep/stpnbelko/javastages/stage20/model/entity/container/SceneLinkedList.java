@@ -63,8 +63,8 @@ public class SceneLinkedList implements Scene, Iterable {
                 temp = temp.next;
             }
             stringBuilder.append(temp.musician).append("\n");
-            return "One the stage now " +
-                    "musicians \n" + stringBuilder;
+            return "One the stage now " + size +
+                    " musicians \n" + stringBuilder;
         }
     }
 
@@ -84,6 +84,23 @@ public class SceneLinkedList implements Scene, Iterable {
         }
 
         return temp.musician;
+    }
+
+    @Override
+    public void set(Musician musician, int index) {
+        if (index >= size || index < 0) {
+            return;
+        } else {
+            if (index == 0) {
+                first.musician = musician;
+            } else {
+                Node temp = first;
+                for (int i = 0; i < index; i++) {
+                    temp = temp.next;
+                }
+                temp.musician = musician;
+            }
+        }
     }
 
     @Override

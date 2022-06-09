@@ -1,10 +1,10 @@
 package by.itstep.stpnbelko.javastages.stage20.util;
 
-import by.itstep.stpnbelko.javastages.stage20.model.entity.Percussion;
-import by.itstep.stpnbelko.javastages.stage20.model.entity.Singer;
-import by.itstep.stpnbelko.javastages.stage20.model.entity.SingerEnum;
-import by.itstep.stpnbelko.javastages.stage20.model.entity.Violin;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Percussion;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.SingerEnum;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Violin;
 
 import java.util.Random;
 
@@ -15,6 +15,23 @@ public class MusicianFactory {
 
     private static final MusicianFactory factory = new MusicianFactory();
     private static final Random random = new Random();
+
+    public enum MusicianTypes {
+        PERCUSSION("Барабаны"),
+        SINGER("Певец"),
+        VIOLIN("Скрипка");
+
+        private final String rusName;
+
+
+        MusicianTypes(String rusName) {
+            this.rusName = rusName;
+        }
+
+        public String getRusName() {
+            return rusName;
+        }
+    }
 
     public Musician createMusician(MusicianTypes type) {
         Musician musician = null;
@@ -61,22 +78,5 @@ public class MusicianFactory {
 
         return new Violin(MusicianTypes.VIOLIN.getRusName() + " "
                 + ++violinCount, experience, volume, salary, numberOfStrings);
-    }
-
-    public enum MusicianTypes {
-        PERCUSSION ("Барабаны"),
-        SINGER("Певец"),
-        VIOLIN("Скрипка");
-
-        private final String rusName;
-
-
-        MusicianTypes(String rusName) {
-            this.rusName = rusName;
-        }
-
-        public String getRusName() {
-            return rusName;
-        }
     }
 }

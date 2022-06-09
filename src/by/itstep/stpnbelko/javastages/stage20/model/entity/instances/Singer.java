@@ -1,4 +1,4 @@
-package by.itstep.stpnbelko.javastages.stage20.model.entity;
+package by.itstep.stpnbelko.javastages.stage20.model.entity.instances;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 

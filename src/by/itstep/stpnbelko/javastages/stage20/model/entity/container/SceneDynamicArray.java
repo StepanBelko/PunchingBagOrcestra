@@ -24,15 +24,12 @@ public class SceneDynamicArray implements Scene, Iterable {
         return musicians;
     }
 
+    @Override
     public void set(Musician musician, int index) {
         musicians[index] = musician;
     }
 
-//       Нужен ли этот сеттер вообще?
-//    public void setMusicians(Musician[] musicians) {
-//        this.musicians = musicians;
-//    }
-
+    @Override
     public void add(Musician musician) {
         Musician[] temp = new Musician[musicians.length + 1];
         int i = 0;
@@ -44,6 +41,7 @@ public class SceneDynamicArray implements Scene, Iterable {
         System.out.println("added " + musician.getName());
     }
 
+    @Override
     public void remove(int index) {
         Musician[] temp = new Musician[musicians.length - 1];
         System.out.println("expelling " + musicians[index].getName());
@@ -55,7 +53,6 @@ public class SceneDynamicArray implements Scene, Iterable {
         }
         musicians = temp;
     }
-
 
     @Override
     public String toString() {
