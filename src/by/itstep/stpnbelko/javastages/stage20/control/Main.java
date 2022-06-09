@@ -7,16 +7,7 @@ import by.itstep.stpnbelko.javastages.stage20.util.SceneBuilder;
 
 public class Main {
     public static void main(String[] args) {
-/*//        создаём музыкантов
-        Musician musician = new Musician("Musician 1");
-        Musician violin = new Violin("violin 1", 3, 20.2, 4);
-        Musician musician1 = new Violin("violin 2", 2, 19, 4);
-        Musician violin3 = new Violin("violin 3", 8, 25.2, 4);
-        Percussion percussion = new Percussion("DrumKit", 10, 50, 12);
-        Singer singer = new Singer("Voice1", 20, 40.0, "highest");
-        Singer singer2 = new Singer("Voice2", 20, 350.0, "low");*/
-
-//        Создаём сцену. Параметр это количество музыкантов
+        
         SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.RND);
         Scene scene = builder.create(10);
 
