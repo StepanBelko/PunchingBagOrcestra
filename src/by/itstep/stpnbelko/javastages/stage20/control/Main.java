@@ -1,8 +1,13 @@
 package by.itstep.stpnbelko.javastages.stage20.control;
 
+import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar;
 import by.itstep.stpnbelko.javastages.stage20.util.BuilderSimpleFactory;
 import by.itstep.stpnbelko.javastages.stage20.util.SceneBuilder;
+
+import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar.GuitarTypes.*;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -12,9 +17,11 @@ public class Main {
 
         System.out.println(scene);
 
-//        некоторых выгоняем со сцены)
-        scene.remove(0);
-        System.out.println(scene);
+        Musician guitar = new Guitar<Guitar.GuitarTypes>("Pete", 15, 12.4, 2000, LEAD_GUITAR);
+
+        System.out.println(guitar);
+
+        
 /*
 //        считаем общий опыт музыкантов(считает дирижёр)
         int totalExp = (int) Kapellmeister.calculateTotal(scene, new Experience());

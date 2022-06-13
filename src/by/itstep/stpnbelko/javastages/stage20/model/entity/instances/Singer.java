@@ -3,7 +3,25 @@ package by.itstep.stpnbelko.javastages.stage20.model.entity.instances;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 
 public class Singer<SingerEnum> extends Musician {
+
     private SingerEnum voicePower;
+
+    public enum SingerEnum {
+        UNKNOWN_VOICE_POWER("Неизвестно"),
+        LOW("Слабый голос"),
+        MID("Средний голос"),
+        HIGH("Сильный голос");
+
+        private String voicePower;
+
+        SingerEnum(String voicePower) {
+            this.voicePower = voicePower;
+        }
+
+        public String getVoicePowerRus() {
+            return voicePower;
+        }
+    }
 
     public Singer(SingerEnum voicePower) {
         super("Singer");
