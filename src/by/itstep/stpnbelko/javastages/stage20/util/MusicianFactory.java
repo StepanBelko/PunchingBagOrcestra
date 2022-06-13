@@ -1,6 +1,7 @@
 package by.itstep.stpnbelko.javastages.stage20.util;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Violin;
@@ -13,6 +14,7 @@ public class MusicianFactory {
     private static int singerCount = 0;
     private static int violinCount = 0;
     private static int percussionCount = 0;
+    private static int guitarCount = 0;
 
     private static final MusicianFactory factory = new MusicianFactory();
     private static final Random random = new Random();
@@ -20,7 +22,8 @@ public class MusicianFactory {
     public enum MusicianTypes {
         PERCUSSION("Барабаны"),
         SINGER("Певец"),
-        VIOLIN("Скрипка");
+        VIOLIN("Скрипка"),
+        GUITAR("");
 
         private final String rusName;
 
@@ -34,6 +37,7 @@ public class MusicianFactory {
         }
     }
 
+
     public Musician createMusician(MusicianTypes type) {
         Musician musician = null;
 
@@ -41,6 +45,7 @@ public class MusicianFactory {
             case SINGER -> musician = createRandomSinger();
             case VIOLIN -> musician = createRandomViolin();
             case PERCUSSION -> musician = createRandomPercussion();
+            case GUITAR -> musician = createRandomGuitar();
         }
         return musician;
     }
@@ -79,5 +84,26 @@ public class MusicianFactory {
 
         return new Violin(MusicianTypes.VIOLIN.getRusName() + " "
                 + ++violinCount, experience, volume, salary, numberOfStrings);
+    }
+
+    private Guitar createRandomGuitar() {
+        String name = generateRandomGuitarType().getTypeOfGuitarFullName();
+        int experience = random.nextInt(100);
+        double volume = random.nextDouble() * 150;
+        double salary = random.nextDouble() * (1500 - 1000) + 1000;
+        Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, generateRandomGuitarType());
+        return (Guitar) guitarist;
+    }
+
+    private static Guitar.GuitarTypes generateRandomGuitarType() {
+        int temp = random.nextInt(2);
+        if (temp == 0) {
+            return Guitar.GuitarTypes.RHYTHM_GUITAR;
+        }
+        if (temp == 1) {
+            return Guitar.GuitarTypes.LEAD_GUITAR;
+        } else {
+            return Guitar.GuitarTypes.BASS;
+        }
     }
 }

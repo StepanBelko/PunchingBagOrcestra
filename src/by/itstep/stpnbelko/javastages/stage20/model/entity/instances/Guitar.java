@@ -2,7 +2,9 @@ package by.itstep.stpnbelko.javastages.stage20.model.entity.instances;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 
-public class Guitar<TypeOfGuitar> extends Musician {
+import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar.GuitarTypes.*;
+
+public class Guitar<GuitarTypes> extends Musician {
 
     private GuitarTypes typeOfGuitar;
 
@@ -25,7 +27,15 @@ public class Guitar<TypeOfGuitar> extends Musician {
 
     @Override
     public String toString() {
-        return super.toString() + " Guitar " + typeOfGuitar;
+        String instrument = null;
+        if (LEAD_GUITAR.equals(typeOfGuitar)) {
+            instrument = LEAD_GUITAR.getTypeOfGuitarFullName();
+        } else if (BASS.equals(typeOfGuitar)) {
+            instrument = BASS.getTypeOfGuitarFullName();
+        } else if (RHYTHM_GUITAR.equals(typeOfGuitar)) {
+            instrument = RHYTHM_GUITAR.getTypeOfGuitarFullName();
+        }
+        return super.toString() + " " + instrument;
     }
 
     public enum GuitarTypes {
