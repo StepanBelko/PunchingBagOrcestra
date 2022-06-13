@@ -12,7 +12,7 @@ public class UserSceneBuilder implements SceneBuilder {
         Musician singer = MusicianFactory.createRandomSinger();
         Musician guitar1 = MusicianFactory.createLeadGuitar();
         Musician guitar2 = MusicianFactory.createRhythmGuitar();
-        Musician bass =  MusicianFactory.createBassGuitar();
+        Musician bass = MusicianFactory.createBassGuitar();
         Musician drums = MusicianFactory.createRandomPercussion();
 
         scene.add(singer);

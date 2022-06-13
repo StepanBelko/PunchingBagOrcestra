@@ -1,21 +1,23 @@
 package by.itstep.stpnbelko.javastages.stage20.control;
 
-import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
-import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.StageSorter;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortBySalaryAsc;
 import by.itstep.stpnbelko.javastages.stage20.util.BuilderSimpleFactory;
 import by.itstep.stpnbelko.javastages.stage20.util.SceneBuilder;
-
-import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar.GuitarTypes.*;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.USER);
-        Scene scene = builder.create(10);
+        SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.RND);
+        Scene scene = builder.create(50);
 
         System.out.println(scene);
+
+        StageSorter.sort(scene, new SortBySalaryAsc());
+        System.out.println(scene);
+        
 /*
 //        считаем общий опыт музыкантов(считает дирижёр)
         int totalExp = (int) Kapellmeister.calculateTotal(scene, new Experience());
