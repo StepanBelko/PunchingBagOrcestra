@@ -5,6 +5,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.StageSorter;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Price;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortBySalaryAsc;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortBySalaryDesc;
 import by.itstep.stpnbelko.javastages.stage20.util.BuilderSimpleFactory;
 import by.itstep.stpnbelko.javastages.stage20.util.SceneBuilder;
 import by.itstep.stpnbelko.javastages.stage20.view.Printer;
@@ -13,12 +14,9 @@ import by.itstep.stpnbelko.javastages.stage20.view.Printer;
 public class Main {
     public static void main(String[] args) {
 
-        SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.RND);
+        SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.USER);
         Scene scene = builder.create(50);
 
-        System.out.println(scene);
-
-        StageSorter.sort(scene, new SortBySalaryAsc());
         System.out.println(scene);
 
         String msg = String.format("Total number of artist - %d. \nTotal price = %.2f",

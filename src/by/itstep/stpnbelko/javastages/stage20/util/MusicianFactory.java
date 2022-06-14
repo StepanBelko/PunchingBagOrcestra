@@ -8,6 +8,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Violin;
 
 import java.util.Random;
 
+import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar.GuitarTypes.*;
 import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer.SingerEnum.UNKNOWN_VOICE_POWER;
 
 public class MusicianFactory {
@@ -23,7 +24,7 @@ public class MusicianFactory {
         PERCUSSION("Барабаны"),
         SINGER("Певец"),
         VIOLIN("Скрипка"),
-        GUITAR("");
+        GUITAR("Какая-то гитара");
 
         private final String rusName;
 
@@ -96,36 +97,36 @@ public class MusicianFactory {
     }
 
     public static Guitar createRhythmGuitar() {
-        String name = Guitar.GuitarTypes.RHYTHM_GUITAR.getTypeOfGuitarFullName();
+        String name = RHYTHM_GUITAR.getTypeOfGuitarFullName();
         int experience = random.nextInt(50);
         double volume = random.nextDouble() * 150;
         double salary = random.nextDouble() * (200 - 100) + 100;
-        Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, generateRandomGuitarType());
+        Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, RHYTHM_GUITAR);
         return (Guitar) guitarist;
     }
 
     public static Guitar createLeadGuitar() {
-        String name = Guitar.GuitarTypes.LEAD_GUITAR.getTypeOfGuitarFullName();
+        String name = LEAD_GUITAR.getTypeOfGuitarFullName();
         int experience = random.nextInt(50);
         double volume = random.nextDouble() * 150;
         double salary = random.nextDouble() * (500 - 250) + 250;
-        Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, generateRandomGuitarType());
+        Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, LEAD_GUITAR);
         return (Guitar) guitarist;
     }
 
     public static Guitar createBassGuitar() {
-        String name = Guitar.GuitarTypes.BASS.getTypeOfGuitarFullName();
+        String name = BASS.getTypeOfGuitarFullName();
         int experience = random.nextInt(50);
         double volume = random.nextDouble() * 350;
         double salary = random.nextDouble() * (100 - 50) + 50;
-        Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, generateRandomGuitarType());
+        Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, BASS);
         return (Guitar) guitarist;
     }
 
     private static Guitar.GuitarTypes generateRandomGuitarType() {
         int temp = random.nextInt(3);
         if (temp == 0) {
-            return Guitar.GuitarTypes.RHYTHM_GUITAR;
+            return RHYTHM_GUITAR;
         }
         if (temp == 1) {
             return Guitar.GuitarTypes.LEAD_GUITAR;

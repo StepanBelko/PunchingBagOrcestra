@@ -22,7 +22,7 @@ public class Guitar<GuitarTypes> extends Musician {
 
     public Guitar(String name, int experience, double volume, double salary, GuitarTypes typeOfGuitar) {
         super(name, experience, volume, salary);
-        this.typeOfGuitar = (GuitarTypes) typeOfGuitar;
+        this.typeOfGuitar = typeOfGuitar;
     }
 
     @Override
@@ -30,10 +30,10 @@ public class Guitar<GuitarTypes> extends Musician {
         String instrument = null;
         if (LEAD_GUITAR.equals(typeOfGuitar)) {
             instrument = LEAD_GUITAR.getTypeOfGuitarFullName();
-        } else if (BASS.equals(typeOfGuitar)) {
-            instrument = BASS.getTypeOfGuitarFullName();
         } else if (RHYTHM_GUITAR.equals(typeOfGuitar)) {
             instrument = RHYTHM_GUITAR.getTypeOfGuitarFullName();
+        } else if (BASS.equals(typeOfGuitar)) {
+            instrument = BASS.getTypeOfGuitarFullName();
         }
         return super.toString() + " " + instrument;
     }
@@ -50,7 +50,7 @@ public class Guitar<GuitarTypes> extends Musician {
         }
 
         public String getTypeOfGuitarFullName() {
-            return typeOfGuitarFullName;
+            return this.typeOfGuitarFullName;
         }
     }
 
