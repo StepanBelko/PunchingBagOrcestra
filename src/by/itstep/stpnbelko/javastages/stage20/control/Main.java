@@ -2,29 +2,27 @@ package by.itstep.stpnbelko.javastages.stage20.control;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.Manager;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.StageSorter;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Price;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortBySalaryAsc;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortBySalaryDesc;
 import by.itstep.stpnbelko.javastages.stage20.util.BuilderSimpleFactory;
 import by.itstep.stpnbelko.javastages.stage20.util.SceneBuilder;
 import by.itstep.stpnbelko.javastages.stage20.view.Printer;
-import by.itstep.stpnbelko.javastages.stage20.view.Writer;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.USER);
-        Scene scene = builder.create(50);
+        SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.RND);
+        Scene scene = builder.create(100);
 
-        Writer.writeToFile(scene.toString(), "RockBand.txt", false);
+        boolean canWeMakePerform = (Manager.canMakePerform(30, 10, scene));
 
-        String msg = String.format("Total number of artist - %d. \nTotal price = %.2f",
-                scene.size(), Kapellmeister.calculateTotal(scene, new Price()));
+        String msg = canWeMakePerform ? "Yes. We can make show" : "No. It's impossible";
 
-        Writer.writeToFile(msg, "RockBand.txt", true);
-        
+        Printer.printMsg(msg);
+
 /*
 //        считаем общий опыт музыкантов(считает дирижёр)
         int totalExp = (int) Kapellmeister.calculateTotal(scene, new Experience());

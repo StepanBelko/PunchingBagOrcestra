@@ -78,7 +78,7 @@ public class Musician implements Playable {
                 "\"" + name + "\"" +
                 ", experience = " + experience + " years" +
                 ", volume = " + String.format("%.2f", volume) + "dB" +
-                ", salary = " + String.format("%.2f",salary) + "$";
+                ", salary = " + String.format("%.1f", salary) + "$/h";
     }
 
     @Override

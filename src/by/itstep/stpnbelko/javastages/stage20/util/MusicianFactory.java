@@ -17,6 +17,9 @@ public class MusicianFactory {
     private static int percussionCount = 0;
     private static int guitarCount = 0;
 
+    private static final int MUSICIAN_MIN_SALARY = 0;  //  50$/h
+    private static final int MUSICIAN_MAX_SALARY = 50;
+
     private static final MusicianFactory factory = new MusicianFactory();
     private static final Random random = new Random();
 
@@ -61,17 +64,17 @@ public class MusicianFactory {
     public static Singer<Singer.SingerEnum> createRandomSinger() {
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 100;
-        double salary = random.nextDouble() * (2000 - 1000) + 1000;
-
+        double salary = countRandomSalary(MUSICIAN_MAX_SALARY, MUSICIAN_MIN_SALARY);
         return new Singer<>(MusicianTypes.SINGER.getRusName() + " "
                 + ++singerCount, experience, volume, salary, UNKNOWN_VOICE_POWER);
     }
+
 
     public static Percussion createRandomPercussion() {
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 500;
         int numberOfDrums = random.nextInt(20);
-        double salary = random.nextDouble() * (200 - 50) + 50;
+        double salary = countRandomSalary(MUSICIAN_MAX_SALARY, MUSICIAN_MIN_SALARY);
 
         return new Percussion(MusicianTypes.PERCUSSION.getRusName() + " "
                 + ++percussionCount, experience, volume, salary, numberOfDrums);
@@ -81,26 +84,26 @@ public class MusicianFactory {
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 120;
         int numberOfStrings = random.nextInt(20);
-        double salary = random.nextDouble() * (800 - 200) + 200;
+        double salary = countRandomSalary(MUSICIAN_MAX_SALARY, MUSICIAN_MIN_SALARY);
 
         return new Violin(MusicianTypes.VIOLIN.getRusName() + " "
                 + ++violinCount, experience, volume, salary, numberOfStrings);
     }
 
     public static Guitar createRandomGuitar() {
-        String name = generateRandomGuitarType().getTypeOfGuitarFullName();
+        Guitar.GuitarTypes randomType = generateRandomGuitarType();
+        String name = randomType.getTypeOfGuitarFullName();
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 150;
-        double salary = random.nextDouble() * (1500 - 100) + 100;
-        Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, generateRandomGuitarType());
-        return (Guitar) guitarist;
+        double salary = countRandomSalary(MUSICIAN_MAX_SALARY, MUSICIAN_MIN_SALARY);
+        return new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, randomType);
     }
 
     public static Guitar createRhythmGuitar() {
         String name = RHYTHM_GUITAR.getTypeOfGuitarFullName();
         int experience = random.nextInt(50);
         double volume = random.nextDouble() * 150;
-        double salary = random.nextDouble() * (200 - 100) + 100;
+        double salary = countRandomSalary(MUSICIAN_MAX_SALARY, MUSICIAN_MIN_SALARY);
         Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, RHYTHM_GUITAR);
         return (Guitar) guitarist;
     }
@@ -109,7 +112,7 @@ public class MusicianFactory {
         String name = LEAD_GUITAR.getTypeOfGuitarFullName();
         int experience = random.nextInt(50);
         double volume = random.nextDouble() * 150;
-        double salary = random.nextDouble() * (500 - 250) + 250;
+        double salary = countRandomSalary(MUSICIAN_MAX_SALARY, MUSICIAN_MIN_SALARY);
         Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, LEAD_GUITAR);
         return (Guitar) guitarist;
     }
@@ -118,7 +121,7 @@ public class MusicianFactory {
         String name = BASS.getTypeOfGuitarFullName();
         int experience = random.nextInt(50);
         double volume = random.nextDouble() * 350;
-        double salary = random.nextDouble() * (100 - 50) + 50;
+        double salary = countRandomSalary(MUSICIAN_MAX_SALARY, MUSICIAN_MIN_SALARY);
         Musician guitarist = new Guitar<>(name + " " + ++guitarCount, experience, volume, salary, BASS);
         return (Guitar) guitarist;
     }
@@ -133,5 +136,13 @@ public class MusicianFactory {
         } else {
             return Guitar.GuitarTypes.BASS;
         }
+    }
+
+    private static double countRandomSalary(int maxVal, int minVal) {
+        maxVal *= 10;
+        minVal *= 10;
+        maxVal -= minVal;
+        int rand = (int) (Math.random() * ++maxVal) + minVal;
+        return (double) rand / 10;
     }
 }
