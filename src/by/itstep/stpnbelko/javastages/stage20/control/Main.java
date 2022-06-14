@@ -9,6 +9,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortBySal
 import by.itstep.stpnbelko.javastages.stage20.util.BuilderSimpleFactory;
 import by.itstep.stpnbelko.javastages.stage20.util.SceneBuilder;
 import by.itstep.stpnbelko.javastages.stage20.view.Printer;
+import by.itstep.stpnbelko.javastages.stage20.view.Writer;
 
 
 public class Main {
@@ -17,12 +18,12 @@ public class Main {
         SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.USER);
         Scene scene = builder.create(50);
 
-        System.out.println(scene);
+        Writer.writeToFile(scene.toString(), "RockBand.txt", false);
 
         String msg = String.format("Total number of artist - %d. \nTotal price = %.2f",
                 scene.size(), Kapellmeister.calculateTotal(scene, new Price()));
 
-        Printer.printMsg(msg);
+        Writer.writeToFile(msg, "RockBand.txt", true);
         
 /*
 //        считаем общий опыт музыкантов(считает дирижёр)
