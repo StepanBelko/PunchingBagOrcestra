@@ -2,7 +2,6 @@ package by.itstep.stpnbelko.javastages.stage20.model.logic;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
-import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneDynamicArray;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer;
@@ -16,13 +15,13 @@ import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guit
 
 public class Manager {
     private static final List<Scene> musicianList = new ArrayList<>();
-    private static final Scene singers = new SceneDynamicArray();
-    private static final Scene leadGuitars = new SceneDynamicArray();
-    private static final Scene rhythmGuitars = new SceneDynamicArray();
-    private static final Scene bassGuitars = new SceneDynamicArray();
-    private static final Scene percussion = new SceneDynamicArray();
+    private static final Scene singers = new Scene();
+    private static final Scene leadGuitars = new Scene();
+    private static final Scene rhythmGuitars = new Scene();
+    private static final Scene bassGuitars = new Scene();
+    private static final Scene percussion = new Scene();
 
-    private static final Scene cheapestBand = new SceneDynamicArray();
+    private static final Scene cheapestBand = new Scene();
 
     public static boolean canMakePerform(int time, double declaredPrice, Scene scene) {
 
@@ -30,8 +29,12 @@ public class Manager {
 
         double musicianPrice;
 
-        for (Scene yourBand : musicianList) {
-            cheapestBand.add(yourBand.get(yourBand.size() - 1));
+        for (Scene oneInstanceOfMusician : musicianList) {
+            if (oneInstanceOfMusician.size() != 0) {
+                cheapestBand.add(oneInstanceOfMusician.get(oneInstanceOfMusician.size() - 1));
+            } else {
+                return false;
+            }
         }
 
         musicianPrice = Kapellmeister.calculateTotal(cheapestBand, new Price());

@@ -2,12 +2,11 @@ package by.itstep.stpnbelko.javastages.stage20.util;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
-import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneDynamicArray;
 
 public class UserSceneBuilder implements SceneBuilder {
 
     public Scene create(int amount) {
-        Scene scene = new SceneDynamicArray();
+        Scene scene = new Scene();
 
         Musician singer = MusicianFactory.createRandomSinger();
         Musician guitar1 = MusicianFactory.createLeadGuitar();
@@ -23,4 +22,5 @@ public class UserSceneBuilder implements SceneBuilder {
 
         return scene;
     }
+
 }

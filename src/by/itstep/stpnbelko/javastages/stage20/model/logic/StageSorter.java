@@ -2,7 +2,6 @@ package by.itstep.stpnbelko.javastages.stage20.model.logic;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
-import by.itstep.stpnbelko.javastages.stage20.model.entity.container.SceneDynamicArray;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.MusiciansSortable;
 
 public class StageSorter {
