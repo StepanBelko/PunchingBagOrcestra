@@ -50,7 +50,7 @@ public class Scene implements Iterable<Musician> {
         for (Musician element : musicians) {
             stringBuilder.append(element.toString()).append("\n");
         }
-        return "One the stage now " + musicians.size() +
-                " musicians \n" + stringBuilder;
+        return  musicians.size() +
+                " musicians: \n" + stringBuilder;
     }
 }

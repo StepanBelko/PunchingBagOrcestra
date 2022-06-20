@@ -24,26 +24,32 @@ public class Manager {
     private static final Scene cheapestBand = new Scene();
 
     public static boolean canMakePerform(int time, double declaredPrice, Scene scene) {
-
+//        Из общего списка рандомных музыкантов создаём списки певцов, гитаристов итд.
         createMusicianList(scene);
 
-        double musicianPrice;
 
-        for (Scene oneInstanceOfMusician : musicianList) {
-            if (oneInstanceOfMusician.size() != 0) {
-                cheapestBand.add(oneInstanceOfMusician.get(oneInstanceOfMusician.size() - 1));
-            } else {
-                return false;
-            }
+//        Если нет ни одного баса или барабанщика итд, то шоу сделать невозможно
+        if (singers.size() == 0 || leadGuitars.size() == 0 || rhythmGuitars.size() == 0
+                || bassGuitars.size() == 0 || percussion.size() == 0) {
+            return false;
         }
 
-        musicianPrice = Kapellmeister.calculateTotal(cheapestBand, new Price());
+//        Сортируем списки музыкантов по цене
+        sortAllListByPriceDesc();
 
+//        Формируем список списка музыкантов
+        createMusicianList();
+
+//        Из этого списка берём самого последнего музыканта(он же самый дешёвый)
+//        и создаём контейнер cheapestBand
+        createCheapestBandList();
+
+        double musicianPrice = Kapellmeister.calculateTotal(cheapestBand, new Price());
         double musicianResult = musicianPrice / 60 * time;
 
         System.out.println("Cheapest Band");
         System.out.println(cheapestBand);
-        System.out.printf("Band price is %.1f$/60min\n\n", musicianPrice);
+        System.out.printf("Cheapest band price is %.1f$/60min\n\n", musicianPrice);
 
         System.out.printf("Declared price is %.1f$/%dmin\nCheapest musicians cost %.1f$/%dmin\n\n",
                 declaredPrice, time, musicianResult, time);
@@ -62,8 +68,12 @@ public class Manager {
                 distributionOfGuitarist((Guitar) musician);
             }
         }
+    }
 
-        sortAllListByPriceDesc();
+    private static void createCheapestBandList() {
+        for (Scene oneInstanceOfMusician : musicianList) {
+            cheapestBand.add(oneInstanceOfMusician.get(oneInstanceOfMusician.size() - 1));
+        }
     }
 
     private static void sortAllListByPriceDesc() {
@@ -73,13 +83,11 @@ public class Manager {
         StageSorter.sort(bassGuitars, new SortBySalaryDesc());
         StageSorter.sort(percussion, new SortBySalaryDesc());
 
-        System.out.println(singers);
-        System.out.println(leadGuitars);
-        System.out.println(rhythmGuitars);
-        System.out.println(bassGuitars);
-        System.out.println(percussion);
-
-        createMusicianList();
+        System.out.println("Singers list. " + singers);
+        System.out.println("Lead guitars list. " + leadGuitars);
+        System.out.println("Rhythm guitars list. " + rhythmGuitars);
+        System.out.println("Bass guitars list. " + bassGuitars);
+        System.out.println("Drums list. " + percussion);
     }
 
     private static void createMusicianList() {

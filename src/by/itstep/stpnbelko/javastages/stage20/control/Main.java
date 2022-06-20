@@ -25,12 +25,14 @@ public class Main {
         SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.RND);
         Scene scene = builder.create(10);
 
+        System.out.println(scene);
+
         boolean canWeMakePerform = (Manager.canMakePerform(120, 500, scene));
 
         String msg = canWeMakePerform ? "Yes. We can make show" : "No. It's impossible";
 
         Printer.printMsg(msg);
-
+/*
 //        считаем общий опыт музыкантов(считает дирижёр)
         int totalExp = (int) Kapellmeister.calculateTotal(scene, new Experience());
         System.out.println("Total musicians experience is " + totalExp + " year(s)");
@@ -69,6 +71,7 @@ public class Main {
 
         StageSorter.sort(scene, new SortBySalaryDesc());
         System.out.println(scene);
+        */
 
     }
 }
