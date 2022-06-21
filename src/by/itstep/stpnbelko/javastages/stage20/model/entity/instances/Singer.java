@@ -6,7 +6,7 @@ public class Singer<SingerEnum> extends Musician {
 
     private SingerEnum voicePower;
 
-    public enum SingerEnum {
+    public enum SingerType {
         UNKNOWN_VOICE_POWER("Неизвестно"),
         LOW("Слабый голос"),
         MID("Средний голос"),
@@ -14,7 +14,7 @@ public class Singer<SingerEnum> extends Musician {
 
         private String voicePower;
 
-        SingerEnum(String voicePower) {
+        SingerType(String voicePower) {
             this.voicePower = voicePower;
         }
 
@@ -43,7 +43,7 @@ public class Singer<SingerEnum> extends Musician {
         this.voicePower = voicePower;
     }
 
-    public SingerEnum getVoicePower() {
+    public SingerEnum getVoiceType() {
         return voicePower;
     }
 
