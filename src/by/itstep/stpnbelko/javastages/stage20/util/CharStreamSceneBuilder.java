@@ -1,6 +1,6 @@
 package by.itstep.stpnbelko.javastages.stage20.util;
 
-import by.itstep.stpnbelko.javastages.stage20.model.entity.MusicianTypes;
+import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.MusicianTypes;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar;
@@ -15,13 +15,13 @@ import java.io.*;
 public class CharStreamSceneBuilder {
 
 
-    private String filePath;
+    private final String filePath;
 
     public CharStreamSceneBuilder(String filePath) {
         this.filePath = filePath;
     }
 
-    public void saveSceneToFile(Scene scene) throws SceneFileNotFoundException, IOException {
+    public void save(Scene scene) throws SceneFileNotFoundException, IOException {
         if (filePath == null) {
             throw new SceneFileNotFoundException();
         }
@@ -63,7 +63,7 @@ public class CharStreamSceneBuilder {
     }
 
 
-    public Scene createSceneFromFile() throws SceneFileNotFoundException {
+    public Scene create() throws SceneFileNotFoundException {
         if (filePath == null) {
             throw new SceneFileNotFoundException();
         }

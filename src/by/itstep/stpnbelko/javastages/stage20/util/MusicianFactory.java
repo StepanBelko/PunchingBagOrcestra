@@ -1,5 +1,6 @@
 package by.itstep.stpnbelko.javastages.stage20.util;
 
+import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.MusicianTypes;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Percussion;
@@ -9,7 +10,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Violin;
 import java.util.Random;
 
 import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar.GuitarTypes.*;
-import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer.SingerEnum.UNKNOWN_VOICE_POWER;
+import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer.SingerType.*;
 
 public class MusicianFactory {
     private static int singerCount = 0;
@@ -22,25 +23,6 @@ public class MusicianFactory {
 
     private static final MusicianFactory factory = new MusicianFactory();
     private static final Random random = new Random();
-
-    public enum MusicianTypes {
-        PERCUSSION("Барабаны"),
-        SINGER("Певец"),
-        VIOLIN("Скрипка"),
-        GUITAR("Какая-то гитара");
-
-        private final String rusName;
-
-
-        MusicianTypes(String rusName) {
-            this.rusName = rusName;
-        }
-
-        public String getRusName() {
-            return rusName;
-        }
-    }
-
 
     public Musician createMusician(MusicianTypes type) {
         Musician musician = null;
@@ -61,12 +43,12 @@ public class MusicianFactory {
         return factory.createMusician(types[i]);
     }
 
-    public static Singer<Singer.SingerEnum> createRandomSinger() {
+    public static Singer<Singer.SingerType> createRandomSinger() {
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 100;
         double salary = countRandomSalary(MUSICIAN_MAX_SALARY, MUSICIAN_MIN_SALARY);
         return new Singer<>(MusicianTypes.SINGER.getRusName() + " "
-                + ++singerCount, experience, volume, salary, UNKNOWN_VOICE_POWER);
+                + ++singerCount, experience, volume, salary, generateRandomVoicePower());
     }
 
 
@@ -135,6 +117,20 @@ public class MusicianFactory {
             return Guitar.GuitarTypes.LEAD_GUITAR;
         } else {
             return Guitar.GuitarTypes.BASS;
+        }
+    }
+
+    private static Singer.SingerType generateRandomVoicePower() {
+        int temp = random.nextInt(4);
+        if (temp == 0) {
+            return LOW;
+        }
+        if (temp == 1) {
+            return MID;
+        } else if (temp == 2) {
+            return HIGH;
+        } else {
+            return UNKNOWN_VOICE_POWER;
         }
     }
 

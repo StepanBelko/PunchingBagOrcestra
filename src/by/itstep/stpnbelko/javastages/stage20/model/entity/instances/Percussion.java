@@ -5,19 +5,8 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 public class Percussion extends Musician {
     private int numberOfDrums;
 
-    public Percussion(int numberOfDrums) {
-        super("Percussion");
-        this.numberOfDrums = numberOfDrums;
-    }
-
-    public Percussion(String name, int numberOfDrums) {
+    public Percussion(String name) {
         super(name);
-        this.numberOfDrums = numberOfDrums;
-    }
-
-    public Percussion(String name, int experience, double volume, int numberOfDrums) {
-        super(name, experience, volume);
-        this.numberOfDrums = numberOfDrums;
     }
 
     public Percussion(String name, int experience, double volume, double salary, int numberOfDrums) {

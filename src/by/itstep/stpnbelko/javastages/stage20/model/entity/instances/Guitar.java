@@ -29,6 +29,10 @@ public class Guitar<GuitarTypes> extends Musician {
         return typeOfGuitar;
     }
 
+    public void setTypeOfGuitar(GuitarTypes typeOfGuitar) {
+        this.typeOfGuitar = typeOfGuitar;
+    }
+
     @Override
     public String toString() {
         String instrument = null;

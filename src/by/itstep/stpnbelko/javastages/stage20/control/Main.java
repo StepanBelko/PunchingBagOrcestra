@@ -1,37 +1,27 @@
 package by.itstep.stpnbelko.javastages.stage20.control;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.Manager;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.StageSorter;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Experience;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Price;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Volume;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfPercussion;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfSinger;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.InstanceOfViolin;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.UnknownInstance;
-import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.*;
-import by.itstep.stpnbelko.javastages.stage20.util.BuilderSimpleFactory;
-import by.itstep.stpnbelko.javastages.stage20.util.SceneBuilder;
-import by.itstep.stpnbelko.javastages.stage20.view.Printer;
 
-import static by.itstep.stpnbelko.javastages.stage20.model.logic.Kapellmeister.howManySomeInstance;
+import by.itstep.stpnbelko.javastages.stage20.util.BuilderSimpleFactory;
+import by.itstep.stpnbelko.javastages.stage20.util.ByteStreamSceneBuilder;
+import by.itstep.stpnbelko.javastages.stage20.util.CharStreamSceneBuilder;
+import by.itstep.stpnbelko.javastages.stage20.util.SceneBuilder;
+import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneFileNotFoundException;
+
+import java.io.IOException;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SceneFileNotFoundException {
+        String filePath = "ByteSceneBuilder.txt";
+//        SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.RND);
+//        Scene    scene = builder.create(10);
 
-        SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.RND);
-        Scene scene = builder.create(10);
-
+        ByteStreamSceneBuilder sceneBuilder = new ByteStreamSceneBuilder(filePath);
+//        sceneBuilder.save(scene);
+        Scene scene = sceneBuilder.create();
         System.out.println(scene);
 
-        boolean canWeMakePerform = (Manager.canMakePerform(120, 500, scene));
-
-        String msg = canWeMakePerform ? "Yes. We can make show" : "No. It's impossible";
-
-        Printer.printMsg(msg);
 /*
 //        считаем общий опыт музыкантов(считает дирижёр)
         int totalExp = (int) Kapellmeister.calculateTotal(scene, new Experience());
