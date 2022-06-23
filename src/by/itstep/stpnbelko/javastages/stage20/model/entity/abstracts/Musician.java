@@ -1,10 +1,16 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts;
 
-public class Musician implements Playable {
+import java.io.IOException;
+import java.io.Serializable;
+
+public class Musician implements Playable, Serializable {
+    static final long serialVersionUID = 1L;
+
     private String name;
     private int experience;
     private double volume;
     private double salary;
+    private transient int musicianID = 123456789;
 
     public Musician(String name) {
         this.name = name;
@@ -72,13 +78,22 @@ public class Musician implements Playable {
         this.salary = salary;
     }
 
+    public int getMusicianID() {
+        return musicianID;
+    }
+
+    public void setMusicianID(int musicianID) {
+        this.musicianID = musicianID;
+    }
+
     @Override
     public String toString() {
         return "Musician " +
                 "\"" + name + "\"" +
                 ", experience = " + experience + " years" +
                 ", volume = " + String.format("%.2f", volume) + "dB" +
-                ", salary = " + String.format("%.1f", salary) + "$/h";
+                ", salary = " + String.format("%.1f", salary) + "$/h" +
+                " ID = " + musicianID;
     }
 
     @Override

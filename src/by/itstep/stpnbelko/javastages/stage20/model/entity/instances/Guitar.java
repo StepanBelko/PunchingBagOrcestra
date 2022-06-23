@@ -2,11 +2,27 @@ package by.itstep.stpnbelko.javastages.stage20.model.entity.instances;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 
+import java.io.IOException;
+import java.io.Serial;
+
 import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar.GuitarTypes.*;
 
 public class Guitar<GuitarTypes> extends Musician {
 
     private GuitarTypes typeOfGuitar;
+
+    @Serial
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+        out.writeInt(getMusicianID());
+    }
+
+    @Serial
+    private void readObject(java.io.ObjectInputStream in)
+            throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        setMusicianID(in.readInt());
+    }
 
     public Guitar(String name) {
         super(name);

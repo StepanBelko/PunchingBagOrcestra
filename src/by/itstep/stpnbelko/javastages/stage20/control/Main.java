@@ -2,11 +2,10 @@ package by.itstep.stpnbelko.javastages.stage20.control;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
 
-import by.itstep.stpnbelko.javastages.stage20.util.BuilderSimpleFactory;
-import by.itstep.stpnbelko.javastages.stage20.util.ByteStreamSceneBuilder;
-import by.itstep.stpnbelko.javastages.stage20.util.CharStreamSceneBuilder;
-import by.itstep.stpnbelko.javastages.stage20.util.SceneBuilder;
+import by.itstep.stpnbelko.javastages.stage20.model.logic.Manager;
+import by.itstep.stpnbelko.javastages.stage20.util.*;
 import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneFileNotFoundException;
+import by.itstep.stpnbelko.javastages.stage20.util.serialization.SceneSerializator;
 
 import java.io.IOException;
 
@@ -14,13 +13,17 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws SceneFileNotFoundException {
         String filePath = "ByteSceneBuilder.txt";
-//        SceneBuilder builder = BuilderSimpleFactory.getBuilder(BuilderSimpleFactory.BuilderType.RND);
-//        Scene    scene = builder.create(10);
 
-        ByteStreamSceneBuilder sceneBuilder = new ByteStreamSceneBuilder(filePath);
-//        sceneBuilder.save(scene);
-        Scene scene = sceneBuilder.create();
-        System.out.println(scene);
+//        RandomSceneBuilder sceneBuilder = new RandomSceneBuilder();
+//        Scene scene = sceneBuilder.create(10);
+//        SceneSerializator.write(scene);
+//        System.out.println(scene);
+
+
+        System.out.println(SceneSerializator.read());
+
+
+//        System.out.println(Manager.canMakePerform(120,500,scene));
 
 /*
 //        считаем общий опыт музыкантов(считает дирижёр)

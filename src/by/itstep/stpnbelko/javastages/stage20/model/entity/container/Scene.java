@@ -3,12 +3,16 @@ package by.itstep.stpnbelko.javastages.stage20.model.entity.container;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.lang.Iterable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Scene implements Iterable<Musician> {
+public class Scene implements Iterable<Musician>, Serializable {
+    static final long serialVersionUID = 1L;
+
     private final List<Musician> musicians;
 
     public Scene() {
@@ -46,11 +50,12 @@ public class Scene implements Iterable<Musician> {
     }
 
     @Override
-    public String toString() {StringBuilder stringBuilder = new StringBuilder();
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
         for (Musician element : musicians) {
             stringBuilder.append(element.toString()).append("\n");
         }
-        return  musicians.size() +
+        return musicians.size() +
                 " musicians: \n" + stringBuilder;
     }
 }
