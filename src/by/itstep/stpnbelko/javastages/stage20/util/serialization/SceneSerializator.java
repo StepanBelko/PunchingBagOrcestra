@@ -8,7 +8,7 @@ public class SceneSerializator {
     private static String serializationPath;
 
     static {
-        serializationPath = "Scene.dat";
+        serializationPath = "SceneSerializator.dat";
     }
 
     public static void write(Scene scene) {

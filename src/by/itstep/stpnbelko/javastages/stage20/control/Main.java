@@ -1,26 +1,24 @@
 package by.itstep.stpnbelko.javastages.stage20.control;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
-
-import by.itstep.stpnbelko.javastages.stage20.model.logic.Manager;
-import by.itstep.stpnbelko.javastages.stage20.util.*;
 import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneFileNotFoundException;
-import by.itstep.stpnbelko.javastages.stage20.util.serialization.SceneSerializator;
 
-import java.io.IOException;
+import static by.itstep.stpnbelko.javastages.stage20.control.ControllerSimpleFactory.addController;
 
 
 public class Main {
     public static void main(String[] args) throws SceneFileNotFoundException {
-        String filePath = "ByteSceneBuilder.txt";
+          addController(ControllerSimpleFactory.FactoryType.USER, new FourthControllerUserRockBand());
+          addController(ControllerSimpleFactory.FactoryType.SERIALIZATION, new FifthControllerSerialization());
 
-//        RandomSceneBuilder sceneBuilder = new RandomSceneBuilder();
-//        Scene scene = sceneBuilder.create(10);
-//        SceneSerializator.write(scene);
-//        System.out.println(scene);
+          ControllerSimpleFactory.FactoryType type = ControllerSimpleFactory.FactoryType.SERIALIZATION;
+
+          SceneController controller = ControllerSimpleFactory.getController(type);
+
+          controller.canMakePerform(120,500);
 
 
-        System.out.println(SceneSerializator.read());
+//        System.out.println(SceneSerializator.read());
 
 
 //        System.out.println(Manager.canMakePerform(120,500,scene));

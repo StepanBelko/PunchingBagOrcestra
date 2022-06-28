@@ -1,5 +1,6 @@
 package by.itstep.stpnbelko.javastages.stage20.util;
 
+import by.itstep.stpnbelko.javastages.stage20.control.SecondControllerChar;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.MusicianTypes;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
@@ -12,13 +13,12 @@ import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneFileNotFoundE
 
 import java.io.*;
 
-public class CharStreamSceneBuilder {
+public class CharStreamSceneBuilder extends SecondControllerChar {
 
+    private String filePath;
 
-    private final String filePath;
-
-    public CharStreamSceneBuilder(String filePath) {
-        this.filePath = filePath;
+    public CharStreamSceneBuilder() {
+        filePath = "CharScene.txt";
     }
 
     public void save(Scene scene) throws SceneFileNotFoundException, IOException {
@@ -63,10 +63,10 @@ public class CharStreamSceneBuilder {
     }
 
 
-    public Scene create() throws SceneFileNotFoundException {
-        if (filePath == null) {
-            throw new SceneFileNotFoundException();
-        }
+    public Scene create() {
+//        if (filePath == null) {
+//            throw new SceneFileNotFoundException();
+//        }
         Scene scene = new Scene();
         try (BufferedReader stream = new BufferedReader(new FileReader(filePath))) {
             Musician musician = null;

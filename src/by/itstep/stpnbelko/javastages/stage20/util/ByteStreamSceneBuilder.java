@@ -1,5 +1,6 @@
 package by.itstep.stpnbelko.javastages.stage20.util;
 
+import by.itstep.stpnbelko.javastages.stage20.control.FirstControllerByte;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.MusicianTypes;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
@@ -11,13 +12,11 @@ import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneFileNotFoundE
 
 import java.io.*;
 
-import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar.GuitarTypes.BASS;
+public class ByteStreamSceneBuilder extends FirstControllerByte {
+    private String filePath;
 
-public class ByteStreamSceneBuilder {
-    private final String filePath;
-
-    public ByteStreamSceneBuilder(String filePath) {
-        this.filePath = filePath;
+    public ByteStreamSceneBuilder() {
+        filePath = "ByteScene.txt";
     }
 
     public void save(Scene scene) throws SceneFileNotFoundException {
@@ -70,10 +69,10 @@ public class ByteStreamSceneBuilder {
         }
     }
 
-    public Scene create() throws SceneFileNotFoundException {
-        if (filePath == null) {
-            throw new SceneFileNotFoundException();
-        }
+    public Scene create() {
+//        if (filePath == null) {
+//            throw new SceneFileNotFoundException();
+//        }
         Scene scene = new Scene();
 
         try (DataInputStream stream = new DataInputStream(
