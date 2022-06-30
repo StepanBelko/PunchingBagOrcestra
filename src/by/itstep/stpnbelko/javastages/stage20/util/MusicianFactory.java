@@ -13,6 +13,7 @@ import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guit
 import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer.SingerType.*;
 
 public class MusicianFactory {
+
     private static int singerCount = 0;
     private static int violinCount = 0;
     private static int percussionCount = 0;

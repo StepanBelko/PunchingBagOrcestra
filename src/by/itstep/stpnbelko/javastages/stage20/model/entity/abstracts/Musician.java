@@ -1,6 +1,5 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 public class Musician implements Playable, Serializable {

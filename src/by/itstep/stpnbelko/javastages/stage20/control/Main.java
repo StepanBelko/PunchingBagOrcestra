@@ -1,27 +1,35 @@
 package by.itstep.stpnbelko.javastages.stage20.control;
 
-import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
 import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneFileNotFoundException;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import static by.itstep.stpnbelko.javastages.stage20.control.ControllerSimpleFactory.addController;
 
 
 public class Main {
+
+    private static final Logger LOG;
+
+    static {
+        LOG = Logger.getRootLogger();
+        LOG.setLevel(Level.ERROR);
+    }
+
     public static void main(String[] args) throws SceneFileNotFoundException {
-          addController(ControllerSimpleFactory.FactoryType.USER, new FourthControllerUserRockBand());
-          addController(ControllerSimpleFactory.FactoryType.SERIALIZATION, new FifthControllerSerialization());
+        LOG.info("Run program");
 
-          ControllerSimpleFactory.FactoryType type = ControllerSimpleFactory.FactoryType.SERIALIZATION;
+        addController(ControllerSimpleFactory.FactoryType.USER, new FourthControllerUserRockBand());
+        addController(ControllerSimpleFactory.FactoryType.SERIALIZATION, new FifthControllerSerialization());
 
-          SceneController controller = ControllerSimpleFactory.getController(type);
+        ControllerSimpleFactory.FactoryType type = ControllerSimpleFactory.FactoryType.SERIALIZATION;
 
-          controller.canMakePerform(120,500);
+        SceneController controller = ControllerSimpleFactory.getController(type);
+
+        controller.canMakePerform(120, 500);
 
 
 //        System.out.println(SceneSerializator.read());
-
-
-//        System.out.println(Manager.canMakePerform(120,500,scene));
 
 /*
 //        считаем общий опыт музыкантов(считает дирижёр)
@@ -63,6 +71,6 @@ public class Main {
         StageSorter.sort(scene, new SortBySalaryDesc());
         System.out.println(scene);
         */
-
+        LOG.info("Finished successfully");
     }
 }

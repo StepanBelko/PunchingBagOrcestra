@@ -7,6 +7,8 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Price;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortBySalaryDesc;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,15 @@ public class Manager {
 
     private static final Scene cheapestBand = new Scene();
 
+    private static final Logger ManagerLOG;
+
+    static {
+        ManagerLOG = Logger.getRootLogger();
+        ManagerLOG.setLevel(Level.ALL);
+    }
+
     public static boolean canMakePerform(int time, double declaredPrice, Scene scene) {
+        ManagerLOG.info("Start canMakePerform()");
 //        Из общего списка рандомных музыкантов создаём списки певцов, гитаристов итд.
         createMusicianList(scene);
 
@@ -31,6 +41,7 @@ public class Manager {
 //        Если нет ни одного баса или барабанщика итд, то шоу сделать невозможно
         if (singers.size() == 0 || leadGuitars.size() == 0 || rhythmGuitars.size() == 0
                 || bassGuitars.size() == 0 || percussion.size() == 0) {
+            ManagerLOG.info("Not enough musicians");
             return false;
         }
 
@@ -47,17 +58,18 @@ public class Manager {
         double musicianPrice = Kapellmeister.calculateTotal(cheapestBand, new Price());
         double musicianResult = musicianPrice / 60 * time;
 
-        System.out.println("Cheapest Band");
-        System.out.println(cheapestBand);
-        System.out.printf("Cheapest band price is %.1f$/60min\n\n", musicianPrice);
+        ManagerLOG.info("Cheapest Band");
+        ManagerLOG.info(cheapestBand);
+        ManagerLOG.info(String.format("Cheapest band price is %.1f$/60min\n\n", musicianPrice));
 
-        System.out.printf("Declared price is %.1f$/%dmin\nCheapest musicians cost %.1f$/%dmin\n\n",
-                declaredPrice, time, musicianResult, time);
+        ManagerLOG.info(String.format("Declared price is %.1f$/%dmin\nCheapest musicians cost %.1f$/%dmin\n\n",
+                declaredPrice, time, musicianResult, time));
 
         return declaredPrice > musicianResult;
     }
 
     private static void createMusicianList(Scene scene) {
+        ManagerLOG.info("Start createMusicianList()");
         for (int i = 0; i < scene.size(); i++) {
             Musician musician = scene.get(i);
             if (musician instanceof Singer) {
@@ -77,17 +89,18 @@ public class Manager {
     }
 
     private static void sortAllListByPriceDesc() {
+        ManagerLOG.info("Start sortAllListByPriceDesc()");
         StageSorter.sort(singers, new SortBySalaryDesc());
         StageSorter.sort(leadGuitars, new SortBySalaryDesc());
         StageSorter.sort(rhythmGuitars, new SortBySalaryDesc());
         StageSorter.sort(bassGuitars, new SortBySalaryDesc());
         StageSorter.sort(percussion, new SortBySalaryDesc());
 
-        System.out.println("Singers list. " + singers);
-        System.out.println("Lead guitars list. " + leadGuitars);
-        System.out.println("Rhythm guitars list. " + rhythmGuitars);
-        System.out.println("Bass guitars list. " + bassGuitars);
-        System.out.println("Drums list. " + percussion);
+        ManagerLOG.debug("Singers list. " + singers);
+        ManagerLOG.debug("Lead guitars list. " + leadGuitars);
+        ManagerLOG.debug("Rhythm guitars list. " + rhythmGuitars);
+        ManagerLOG.debug("Bass guitars list. " + bassGuitars);
+        ManagerLOG.debug("Drums list. " + percussion);
     }
 
     private static void createMusicianList() {
