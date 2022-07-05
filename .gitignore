@@ -1,3 +1,6 @@
 out/ 
 /RockBand.txt
 /.idea/libraries/JUnit.xml
+/ByteScene.txt
+/CharScene.txt
+/SceneSerializator.dat
