@@ -28,8 +28,8 @@ public class Manager {
     private static final Logger ManagerLOG;
 
     static {
-        ManagerLOG = Logger.getRootLogger();
-        ManagerLOG.setLevel(Level.ALL);
+        ManagerLOG = Logger.getLogger(Manager.class);
+        ManagerLOG.setLevel(Level.DEBUG);
     }
 
     public static boolean canMakePerform(int time, double declaredPrice, Scene scene) {
@@ -41,7 +41,7 @@ public class Manager {
 //        Если нет ни одного баса или барабанщика итд, то шоу сделать невозможно
         if (singers.size() == 0 || leadGuitars.size() == 0 || rhythmGuitars.size() == 0
                 || bassGuitars.size() == 0 || percussion.size() == 0) {
-            ManagerLOG.info("Not enough musicians");
+            ManagerLOG.debug("Not enough musicians");
             return false;
         }
 
@@ -58,11 +58,11 @@ public class Manager {
         double musicianPrice = Kapellmeister.calculateTotal(cheapestBand, new Price());
         double musicianResult = musicianPrice / 60 * time;
 
-        ManagerLOG.info("Cheapest Band");
-        ManagerLOG.info(cheapestBand);
-        ManagerLOG.info(String.format("Cheapest band price is %.1f$/60min\n\n", musicianPrice));
+        ManagerLOG.debug("Cheapest Band");
+        ManagerLOG.debug(cheapestBand);
+        ManagerLOG.debug(String.format("Cheapest band price is %.1f$/60min\n\n", musicianPrice));
 
-        ManagerLOG.info(String.format("Declared price is %.1f$/%dmin\nCheapest musicians cost %.1f$/%dmin\n\n",
+        ManagerLOG.debug(String.format("Declared price is %.1f$/%dmin\nCheapest musicians cost %.1f$/%dmin\n\n",
                 declaredPrice, time, musicianResult, time));
 
         return declaredPrice > musicianResult;

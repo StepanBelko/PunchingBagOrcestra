@@ -6,7 +6,11 @@ import by.itstep.stpnbelko.javastages.stage20.util.RandomSceneBuilder;
 public class ThirdControllerRandom extends SceneController {
 
     @Override
-    public Scene create() {
-        return new RandomSceneBuilder().create();
+    public Scene createCurrentScene() {
+        return new RandomSceneBuilder().createCurrentScene();
+    }
+
+    public Scene getCurrentScene() {
+        return new RandomSceneBuilder().getCurrentScene();
     }
 }

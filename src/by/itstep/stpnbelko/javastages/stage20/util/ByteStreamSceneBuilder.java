@@ -8,7 +8,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Violin;
-import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneFileNotFoundException;
+import by.itstep.stpnbelko.javastages.stage20.util.exceptions.tecnicalException.SceneFileNotFoundException;
 
 import java.io.*;
 
@@ -69,7 +69,7 @@ public class ByteStreamSceneBuilder extends FirstControllerByte {
         }
     }
 
-    public Scene create() {
+    public Scene createCurrentScene() {
 //        if (filePath == null) {
 //            throw new SceneFileNotFoundException();
 //        }

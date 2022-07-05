@@ -19,7 +19,7 @@ public class MusicianFactory {
     private static int percussionCount = 0;
     private static int guitarCount = 0;
 
-    private static final int MUSICIAN_MIN_SALARY = 0;  //  50$/h
+    private static final int MUSICIAN_MIN_SALARY = 0;
     private static final int MUSICIAN_MAX_SALARY = 50;
 
     private static final MusicianFactory factory = new MusicianFactory();
@@ -66,7 +66,7 @@ public class MusicianFactory {
     private Violin createRandomViolin() {
         int experience = random.nextInt(100);
         double volume = random.nextDouble() * 120;
-        int numberOfStrings = random.nextInt(20);
+        int numberOfStrings = random.nextInt(4);
         double salary = countRandomSalary(MUSICIAN_MAX_SALARY, MUSICIAN_MIN_SALARY);
 
         return new Violin(MusicianTypes.VIOLIN.getRusName() + " "
@@ -110,7 +110,7 @@ public class MusicianFactory {
     }
 
     private static Guitar.GuitarTypes generateRandomGuitarType() {
-        int temp = random.nextInt(3);
+        int temp = random.nextInt(Guitar.GuitarTypes.values().length);
         if (temp == 0) {
             return RHYTHM_GUITAR;
         }
@@ -122,7 +122,7 @@ public class MusicianFactory {
     }
 
     private static Singer.SingerType generateRandomVoicePower() {
-        int temp = random.nextInt(4);
+        int temp = random.nextInt(Singer.SingerType.values().length);
         if (temp == 0) {
             return LOW;
         }

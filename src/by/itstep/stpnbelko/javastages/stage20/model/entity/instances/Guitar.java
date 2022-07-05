@@ -4,25 +4,13 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 
 import java.io.IOException;
 import java.io.Serial;
+import java.util.Objects;
 
 import static by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar.GuitarTypes.*;
 
 public class Guitar<GuitarTypes> extends Musician {
 
     private GuitarTypes typeOfGuitar;
-
-    @Serial
-    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-        out.writeInt(getMusicianID());
-    }
-
-    @Serial
-    private void readObject(java.io.ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-        setMusicianID(in.readInt());
-    }
 
     public Guitar(String name) {
         super(name);
@@ -39,6 +27,19 @@ public class Guitar<GuitarTypes> extends Musician {
     public Guitar(String name, int experience, double volume, double salary, GuitarTypes typeOfGuitar) {
         super(name, experience, volume, salary);
         this.typeOfGuitar = typeOfGuitar;
+    }
+
+    @Serial
+    private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();
+        out.writeInt(getMusicianID());
+    }
+
+    @Serial
+    private void readObject(java.io.ObjectInputStream in)
+            throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        setMusicianID(in.readInt());
     }
 
     public GuitarTypes getTypeOfGuitar() {
@@ -78,4 +79,17 @@ public class Guitar<GuitarTypes> extends Musician {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Guitar<?> guitar = (Guitar<?>) o;
+        return Objects.equals(typeOfGuitar, guitar.typeOfGuitar);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), typeOfGuitar);
+    }
 }

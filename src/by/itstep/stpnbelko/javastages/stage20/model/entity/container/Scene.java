@@ -3,7 +3,6 @@ package by.itstep.stpnbelko.javastages.stage20.model.entity.container;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.lang.Iterable;
 import java.util.ArrayList;
@@ -28,7 +27,9 @@ public class Scene implements Iterable<Musician>, Serializable {
     }
 
     public void set(Musician musician, int index) {
-        musicians.set(index, musician);
+        if (index < musicians.size() && musician != null) {
+            musicians.set(index, musician);
+        }
     }
 
     public void add(Musician musician) {
@@ -36,11 +37,24 @@ public class Scene implements Iterable<Musician>, Serializable {
     }
 
     public void remove(int index) {
-        musicians.remove(index);
+
+        if (index < musicians.size()) {
+            musicians.remove(index);
+        }
     }
 
     public int size() {
         return musicians.size();
+    }
+
+    public boolean isEmpty() {
+        return musicians.size() == 0;
+    }
+
+    public void clear() {
+        for (int i = 0; i < musicians.size(); i++) {
+            musicians.remove(i);
+        }
     }
 
     @NotNull
@@ -58,4 +72,6 @@ public class Scene implements Iterable<Musician>, Serializable {
         return musicians.size() +
                 " musicians: \n" + stringBuilder;
     }
+
+
 }

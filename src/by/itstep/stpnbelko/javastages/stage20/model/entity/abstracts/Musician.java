@@ -1,6 +1,7 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Musician implements Playable, Serializable {
     static final long serialVersionUID = 1L;
@@ -10,6 +11,14 @@ public class Musician implements Playable, Serializable {
     private double volume;
     private double salary;
     private transient int musicianID = 123456789;
+
+//    public Musician(Musician musician) {
+//        this.name = musician.name;
+//        this.experience = musician.experience;
+//        this.volume = musician.volume;
+//        this.salary = musician.salary;
+//        this.musicianID = musician.musicianID;
+//    }
 
     public Musician(String name) {
         this.name = name;
@@ -46,7 +55,7 @@ public class Musician implements Playable, Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name != null) this.name = name;
     }
 
     public int getExperience() {
@@ -74,7 +83,7 @@ public class Musician implements Playable, Serializable {
     }
 
     public void setSalary(double salary) {
-        this.salary = salary;
+        if (salary >= 0) this.salary = salary;
     }
 
     public int getMusicianID() {
@@ -98,5 +107,22 @@ public class Musician implements Playable, Serializable {
     @Override
     public void playMusic() {
         System.out.println(name + " play music now");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Musician musician = (Musician) o;
+        return experience == musician.experience
+                && Double.compare(musician.volume, volume) == 0
+                && Double.compare(musician.salary, salary) == 0
+                && musicianID == musician.musicianID
+                && Objects.equals(name, musician.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, experience, volume, salary, musicianID);
     }
 }

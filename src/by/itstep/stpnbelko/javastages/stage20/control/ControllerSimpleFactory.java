@@ -19,6 +19,8 @@ public class ControllerSimpleFactory {
         map.put(FactoryType.RND, new ThirdControllerRandom());
         map.put(FactoryType.FROM_FILE_BYTE, new FirstControllerByte());
         map.put(FactoryType.FROM_FILE_CHAR, new SecondControllerChar());
+        map.put(FactoryType.SERIALIZATION, new FifthControllerSerialization());
+        map.put(FactoryType.USER, new FourthControllerUserRockBand());
     }
 
     public static SceneController getController(FactoryType key) {

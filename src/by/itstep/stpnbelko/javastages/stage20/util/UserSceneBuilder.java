@@ -5,8 +5,9 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.container.Scene;
 
 public class UserSceneBuilder extends SceneController {
+    private static Scene currentScene;
 
-    public Scene create() {
+    public Scene createCurrentScene() {
         Scene scene = new Scene();
 
         Musician singer = MusicianFactory.createRandomSinger();
@@ -21,7 +22,13 @@ public class UserSceneBuilder extends SceneController {
         scene.add(bass);
         scene.add(drums);
 
+        currentScene = scene;
         return scene;
+    }
+
+    @Override
+    public Scene getCurrentScene() {
+        return currentScene;
     }
 
 }

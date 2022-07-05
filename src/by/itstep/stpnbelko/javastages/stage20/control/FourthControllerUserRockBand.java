@@ -5,7 +5,12 @@ import by.itstep.stpnbelko.javastages.stage20.util.UserSceneBuilder;
 
 public class FourthControllerUserRockBand extends SceneController {
     @Override
-    public Scene create() {
-        return new UserSceneBuilder().create();
+    public Scene createCurrentScene() {
+        return new UserSceneBuilder().createCurrentScene();
+    }
+
+    @Override
+    public  Scene getCurrentScene() {
+        return new UserSceneBuilder().getCurrentScene();
     }
 }

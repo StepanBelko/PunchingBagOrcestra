@@ -2,6 +2,8 @@ package by.itstep.stpnbelko.javastages.stage20.model.entity.instances;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 
+import java.util.Objects;
+
 public class Percussion extends Musician {
     private int numberOfDrums;
 
@@ -26,5 +28,19 @@ public class Percussion extends Musician {
     public String toString() {
         return super.toString() + " Percussion " +
                 "numberOfDrums = " + numberOfDrums;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Percussion that = (Percussion) o;
+        return numberOfDrums == that.numberOfDrums;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), numberOfDrums);
     }
 }

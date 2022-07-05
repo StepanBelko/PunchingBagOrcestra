@@ -5,7 +5,12 @@ import by.itstep.stpnbelko.javastages.stage20.util.serialization.SceneSerializat
 
 public class FifthControllerSerialization extends SceneController {
     @Override
-    public Scene create() {
+    public Scene createCurrentScene() {
+        return new SceneSerializator().read();
+    }
+
+    @Override
+    public Scene getCurrentScene() {
         return new SceneSerializator().read();
     }
 }
