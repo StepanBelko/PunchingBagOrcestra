@@ -9,7 +9,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar.Guit
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Violin;
-import by.itstep.stpnbelko.javastages.stage20.util.exceptions.tecnicalException.SceneFileNotFoundException;
+import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneFileNotFoundException;
 
 import java.io.*;
 

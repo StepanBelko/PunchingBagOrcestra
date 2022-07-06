@@ -1,7 +1,4 @@
 0 musicians: 
-3 musicians: 
-Musician "Bass guitar 3", experience = 47 years, volume = 36,38dB, salary = 5,8$/h ID = 123456789 Bass guitar
-Musician "Певец 1", experience = 35 years, volume = 86,06dB, salary = 2,3$/h ID = 123456789 Singer voicePower = MID
-Musician "Lead guitar 1", experience = 5 years, volume = 101,34dB, salary = 1,6$/h ID = 123456789 Lead guitar
+0 musicians: 
 1 musicians: 
-Musician "Bass guitar 3", experience = 47 years, volume = 36,38dB, salary = 5,8$/h ID = 123456789 Bass guitar
+Musician "Bass guitar 3", experience = 76 years, volume = 19,49dB, salary = 33,8$/h ID = 123456789 Bass guitar

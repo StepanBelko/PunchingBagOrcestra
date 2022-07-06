@@ -4,8 +4,6 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.MusicianCalculable;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.MusicianInstance;
 
-import java.util.Iterator;
-
 public class Kapellmeister {
     private Kapellmeister() {
     }

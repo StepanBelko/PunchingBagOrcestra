@@ -3,10 +3,8 @@ package by.itstep.stpnbelko.javastages.stage20.control;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.Finder;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.*;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.salaryFindStrategy.*;
-import by.itstep.stpnbelko.javastages.stage20.util.exceptions.tecnicalException.SceneFileNotFoundException;
 import by.itstep.stpnbelko.javastages.stage20.view.Writer;
 
-import java.io.IOException;
 
 public class Main {
 
@@ -16,7 +14,7 @@ public class Main {
         ControllerSimpleFactory.FactoryType type = ControllerSimpleFactory.FactoryType.RND;
 //        ControllerSimpleFactory.FactoryType type = ControllerSimpleFactory.FactoryType.USER;
 
-//        следующие три читают из файла
+//        следующие три читают из файлов SceneSerializator.txt, ByteScene.txt и CharScene.txt соответственно
 //        ControllerSimpleFactory.FactoryType type = ControllerSimpleFactory.FactoryType.SERIALIZATION;
 //        ControllerSimpleFactory.FactoryType type = ControllerSimpleFactory.FactoryType.FROM_FILE_BYTE;
 //        ControllerSimpleFactory.FactoryType type = ControllerSimpleFactory.FactoryType.FROM_FILE_CHAR;
@@ -66,12 +64,8 @@ public class Main {
 
 
 //        Так же мы можем сохранить текущую сцену во все виды файлов
-        try {
-            controller.saveCurrentScene();
-        } catch (IOException | SceneFileNotFoundException e) {
-//            !!!!!!!!Доделать!!!!!!!
-            throw new RuntimeException(e);
-        }
+        controller.saveCurrentScene();
+
 //        Результаты работы программы сохраняются в log.txt и выводятся на консоль
     }
 }

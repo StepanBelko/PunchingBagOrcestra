@@ -8,7 +8,7 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Guitar;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Violin;
-import by.itstep.stpnbelko.javastages.stage20.util.exceptions.tecnicalException.SceneFileNotFoundException;
+import by.itstep.stpnbelko.javastages.stage20.util.exceptions.FilePathIsUnreachableException;
 
 import java.io.*;
 
@@ -19,11 +19,14 @@ public class ByteStreamSceneBuilder extends FirstControllerByte {
         filePath = "ByteScene.txt";
     }
 
-    public void save(Scene scene) throws SceneFileNotFoundException {
+    public void save(Scene scene) {
         if (filePath == null) {
-            throw new SceneFileNotFoundException();
+            try {
+                throw new FilePathIsUnreachableException("file path is unreachable");
+            } catch (FilePathIsUnreachableException e) {
+                System.err.println(e);
+            }
         }
-
         try (DataOutputStream stream = new DataOutputStream(
                 new BufferedOutputStream(
                         new FileOutputStream(filePath)))) {
@@ -70,9 +73,14 @@ public class ByteStreamSceneBuilder extends FirstControllerByte {
     }
 
     public Scene createCurrentScene() {
-//        if (filePath == null) {
-//            throw new SceneFileNotFoundException();
-//        }
+        if (filePath == null) {
+            try {
+                throw new FilePathIsUnreachableException();
+            } catch (FilePathIsUnreachableException e) {
+                System.err.println(e);;
+            }
+        }
+
         Scene scene = new Scene();
 
         try (DataInputStream stream = new DataInputStream(
@@ -123,8 +131,8 @@ public class ByteStreamSceneBuilder extends FirstControllerByte {
                 scene.add(musician);
             }
 
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
         return scene;
     }

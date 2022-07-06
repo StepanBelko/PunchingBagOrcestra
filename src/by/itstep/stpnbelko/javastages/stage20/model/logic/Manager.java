@@ -7,9 +7,11 @@ import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Percussion;
 import by.itstep.stpnbelko.javastages.stage20.model.entity.instances.Singer;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.calculateTotalStrategy.Price;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.SortBySalaryDesc;
+import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneIsEmptyException;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +36,10 @@ public class Manager {
 
     public static boolean canMakePerform(int time, double declaredPrice, Scene scene) {
         ManagerLOG.info("Start canMakePerform()");
+
+            if (scene == null || scene.isEmpty()) {
+                throw new NullPointerException("Scene is empty");
+            }
 //        Из общего списка рандомных музыкантов создаём списки певцов, гитаристов итд.
         createMusicianList(scene);
 
@@ -65,7 +71,7 @@ public class Manager {
         ManagerLOG.debug(String.format("Declared price is %.1f$/%dmin\nCheapest musicians cost %.1f$/%dmin\n\n",
                 declaredPrice, time, musicianResult, time));
 
-        return declaredPrice > musicianResult;
+        return declaredPrice >= musicianResult;
     }
 
     private static void createMusicianList(Scene scene) {

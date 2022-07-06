@@ -9,7 +9,8 @@ import by.itstep.stpnbelko.javastages.stage20.model.logic.instanceStrategy.*;
 import by.itstep.stpnbelko.javastages.stage20.model.logic.sortStrategy.*;
 import by.itstep.stpnbelko.javastages.stage20.util.ByteStreamSceneBuilder;
 import by.itstep.stpnbelko.javastages.stage20.util.CharStreamSceneBuilder;
-import by.itstep.stpnbelko.javastages.stage20.util.exceptions.tecnicalException.SceneFileNotFoundException;
+import by.itstep.stpnbelko.javastages.stage20.util.exceptions.FilePathIsUnreachableException;
+import by.itstep.stpnbelko.javastages.stage20.util.exceptions.SceneFileNotFoundException;
 import by.itstep.stpnbelko.javastages.stage20.util.serialization.SceneSerializator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -31,10 +32,14 @@ public abstract class SceneController {
 
     public abstract Scene getCurrentScene();
 
-    public void saveCurrentScene() throws SceneFileNotFoundException, IOException {
+    public void saveCurrentScene() {
         Scene scene = getCurrentScene();
         new ByteStreamSceneBuilder().save(scene);
-        new CharStreamSceneBuilder().save(scene);
+        try {
+            new CharStreamSceneBuilder().save(scene);
+        } catch (SceneFileNotFoundException | IOException exc) {
+            System.err.println(exc);
+        }
         SceneSerializator.write(scene);
         SceneLOG.info("Successfully saved");
     }
