@@ -1,7 +1,6 @@
 package by.itstep.stpnbelko.javastages.stage20.model.entity.container;
 
 import by.itstep.stpnbelko.javastages.stage20.model.entity.abstracts.Musician;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
 import java.lang.Iterable;
@@ -57,7 +56,6 @@ public class Scene implements Iterable<Musician>, Serializable {
         }
     }
 
-    @NotNull
     @Override
     public Iterator<Musician> iterator() {
         return musicians.iterator();
